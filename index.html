@@ -3,45 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>Vamp4 - Earn, AI & PDF Tools</title>
+<meta name="description" content="Vamp4 - AI tools, digital services, education, PDF and image tools, maps and travel utilities.">
+<title>Vamp4 | AI, Digital Services, Education & Travel</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --primary:#6c3df4;
-  --secondary:#8b5cf6;
-  --dark:#111827;
-  --text:#1f2937;
-  --muted:#6b7280;
+  --primary:#673de6;
+  --primary2:#8b5cf6;
+  --dark:#172033;
+  --muted:#687080;
   --bg:#f5f7fb;
-  --card:#ffffff;
-  --border:#e5e7eb;
-  --success:#16a34a;
-  --danger:#dc2626;
-  --warning:#d97706;
+  --card:#fff;
+  --border:#e2e5eb;
+  --success:#16803c;
+  --danger:#b42318;
+  --warning:#a15c00;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:var(--bg);
-  color:var(--text);
+  color:var(--dark);
+  line-height:1.5;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 .hidden{
@@ -53,95 +51,118 @@ button{
 header{
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
   background:#fff;
   border-bottom:1px solid var(--border);
 }
 
-.header-inner{
-  max-width:1400px;
+.header{
+  max-width:1450px;
   margin:auto;
   min-height:70px;
+  padding:12px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:12px 20px;
   gap:20px;
 }
 
 .logo{
-  font-size:26px;
-  font-weight:800;
   color:var(--primary);
+  font-size:29px;
+  font-weight:900;
+  letter-spacing:.5px;
 }
 
-.header-actions{
+.header-right{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.icon-btn,
-.menu-btn{
-  border:1px solid var(--border);
-  background:#fff;
-  padding:10px 13px;
-  border-radius:10px;
+/* BUTTONS */
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:11px 17px;
+  font-weight:700;
+  transition:.2s;
 }
 
-.badge{
-  display:inline-flex;
-  min-width:20px;
-  height:20px;
-  padding:0 5px;
-  align-items:center;
-  justify-content:center;
-  border-radius:50px;
-  background:var(--danger);
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.primary{
+  background:var(--primary);
   color:#fff;
-  font-size:11px;
+}
+
+.secondary{
+  background:#eee9ff;
+  color:#5428c7;
+}
+
+.light{
+  background:#f1f3f7;
+  color:#273044;
+}
+
+.success-btn{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.danger{
+  background:#fee2e2;
+  color:#991b1b;
 }
 
 /* LAYOUT */
 
 .layout{
-  max-width:1400px;
+  max-width:1450px;
   margin:auto;
   display:grid;
-  grid-template-columns:250px 1fr;
+  grid-template-columns:255px 1fr;
   min-height:calc(100vh - 70px);
 }
 
 .sidebar{
   background:#fff;
   border-right:1px solid var(--border);
-  padding:20px 12px;
+  padding:15px;
+  overflow-y:auto;
 }
 
 .nav-title{
-  font-size:12px;
-  font-weight:700;
-  color:var(--muted);
-  padding:15px 12px 7px;
+  color:#7b8190;
+  font-size:11px;
+  font-weight:800;
   text-transform:uppercase;
+  margin:18px 8px 7px;
 }
 
-.nav-btn{
+.nav{
+  display:block;
   width:100%;
   border:0;
   background:transparent;
   text-align:left;
-  padding:12px;
-  border-radius:10px;
+  padding:11px 12px;
+  border-radius:9px;
   margin-bottom:3px;
-  color:var(--text);
+  color:#273044;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
-  background:#f0ebff;
-  color:var(--primary);
+.nav:hover,
+.nav.active{
+  background:#eee9ff;
+  color:#5428c7;
 }
+
+/* MAIN */
 
 main{
   padding:25px;
@@ -153,33 +174,70 @@ main{
   margin:auto;
 }
 
-.page h1{
-  font-size:30px;
+/* HERO */
+
+.hero{
+  padding:45px;
+  margin-bottom:25px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary2)
+  );
+}
+
+.hero h1{
+  font-size:43px;
+  line-height:1.15;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:13px;
+  font-size:17px;
+  opacity:.95;
+}
+
+.hero-actions{
+  margin-top:22px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* TYPOGRAPHY */
+
+h1{
+  font-size:31px;
+  margin-bottom:7px;
+}
+
+h2{
+  margin-bottom:10px;
+}
+
+h3{
   margin-bottom:8px;
 }
 
-.page-subtitle{
+.subtitle{
   color:var(--muted);
-  margin-bottom:25px;
+  margin-bottom:22px;
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.grid-3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
 
-.grid-2{
+.grid4{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:18px;
 }
 
@@ -188,110 +246,104 @@ main{
   border:1px solid var(--border);
   border-radius:16px;
   padding:20px;
-  box-shadow:0 2px 10px rgba(0,0,0,.03);
 }
 
-.card h2,
-.card h3{
-  margin-bottom:10px;
-}
-
-.stat-value{
-  font-size:28px;
-  font-weight:800;
-  margin-top:8px;
-}
-
-.muted{
+.card p{
   color:var(--muted);
 }
 
-/* BUTTONS */
-
-.btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 16px;
-  font-weight:700;
+.icon{
+  font-size:34px;
+  margin-bottom:11px;
 }
 
-.btn-primary{
-  background:var(--primary);
-  color:#fff;
-}
-
-.btn-secondary{
-  background:#ede9fe;
-  color:#5b21b6;
-}
-
-.btn-success{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.btn-danger{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-.btn-warning{
-  background:#fef3c7;
-  color:#92400e;
+.card-actions{
+  margin-top:15px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
 /* FORMS */
 
-.form-group{
-  margin-bottom:15px;
+.form{
+  display:grid;
+  gap:15px;
 }
 
 label{
   display:block;
+  font-weight:700;
   margin-bottom:6px;
-  font-weight:600;
 }
 
 input,
 select,
 textarea{
   width:100%;
+  border:1px solid #d6dae3;
+  border-radius:9px;
   padding:12px;
-  border:1px solid var(--border);
-  border-radius:10px;
   background:#fff;
-  outline:none;
+  color:var(--dark);
 }
 
 input:focus,
 select:focus,
 textarea:focus{
+  outline:2px solid #ddd3ff;
   border-color:var(--primary);
 }
 
 textarea{
+  min-height:130px;
   resize:vertical;
 }
 
-/* HERO */
-
-.hero{
-  background:linear-gradient(135deg,#6c3df4,#8b5cf6);
-  color:#fff;
-  border-radius:22px;
-  padding:40px;
-  margin-bottom:25px;
+input[type="checkbox"],
+input[type="radio"]{
+  width:auto;
 }
 
-.hero h1{
-  font-size:42px;
-  margin-bottom:12px;
+/* TOOL RESULT */
+
+.tool-result{
+  background:#f8f8ff;
+  border:1px solid #e7e2ff;
+  border-radius:10px;
+  padding:15px;
+  margin-top:15px;
+  min-height:60px;
 }
 
-.hero p{
-  max-width:700px;
-  opacity:.92;
-  line-height:1.6;
+/* BADGES */
+
+.badge{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.badge-success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge-warning{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.badge-danger{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.badge-info{
+  background:#dbeafe;
+  color:#1e40af;
 }
 
 /* TABLE */
@@ -300,141 +352,104 @@ textarea{
   overflow:auto;
 }
 
-table{
+.table{
   width:100%;
   border-collapse:collapse;
-  background:#fff;
 }
 
-th,
-td{
-  padding:13px;
+.table th,
+.table td{
+  padding:12px;
   border-bottom:1px solid var(--border);
   text-align:left;
   white-space:nowrap;
 }
 
-th{
-  background:#f9fafb;
-}
+/* MAP */
 
-/* STATUS */
-
-.status{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:50px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.status-pending{
-  background:#fef3c7;
-  color:#92400e;
-}
-
-.status-success{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.status-danger{
-  background:#fee2e2;
-  color:#991b1b;
-}
-
-/* FILES */
-
-.file-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:16px;
+.map-box{
+  height:450px;
+  margin-top:20px;
+  border-radius:17px;
   border:1px solid var(--border);
-  border-radius:12px;
-  margin-bottom:10px;
-  background:#fff;
-}
-
-.file-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-}
-
-.storage-bar{
-  height:10px;
-  background:#e5e7eb;
-  border-radius:20px;
+  position:relative;
   overflow:hidden;
-  margin-top:12px;
+
+  background:
+    linear-gradient(
+      25deg,
+      transparent 47%,
+      #cbd5e1 48%,
+      #cbd5e1 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      155deg,
+      transparent 47%,
+      #cbd5e1 48%,
+      #cbd5e1 50%,
+      transparent 51%
+    ),
+    #e8f1e8;
+  background-size:110px 110px;
 }
 
-.storage-progress{
-  height:100%;
-  width:35%;
-  background:var(--primary);
-}
-
-/* NOTIFICATIONS */
-
-.notification-panel{
-  position:fixed;
-  right:20px;
-  top:75px;
-  width:360px;
-  max-width:calc(100vw - 40px);
-  max-height:70vh;
-  overflow:auto;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-  z-index:200;
-}
-
-.notification-header{
-  padding:15px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-}
-
-.notification{
-  padding:15px;
-  border-bottom:1px solid var(--border);
-}
-
-.notification.unread{
-  background:#f5f3ff;
-}
-
-/* AUTH */
-
-.auth-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.auth-box{
+.map-road{
+  position:absolute;
   width:100%;
-  max-width:450px;
+  height:5px;
   background:#fff;
-  padding:30px;
-  border-radius:20px;
-  border:1px solid var(--border);
+  transform:rotate(-12deg);
+  top:52%;
 }
 
-.auth-logo{
+.map-marker{
+  position:absolute;
+  left:48%;
+  top:45%;
+  font-size:40px;
+}
+
+/* PRODUCT */
+
+.product-cover{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#eee;
+  margin-bottom:14px;
+}
+
+.price{
+  font-size:24px;
+  font-weight:900;
+  margin-top:10px;
+}
+
+/* STAT */
+
+.stat-number{
+  font-size:30px;
+  font-weight:900;
+}
+
+/* FOOTER */
+
+footer{
+  max-width:1200px;
+  margin:35px auto 0;
+  padding:30px 20px;
+  color:var(--muted);
   text-align:center;
-  font-size:32px;
-  font-weight:800;
-  color:var(--primary);
-  margin-bottom:25px;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:10px;
 }
 
 /* MODAL */
@@ -442,35 +457,62 @@ th{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
+  z-index:2000;
+  background:#0008;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
-  z-index:300;
 }
 
 .modal-box{
   background:#fff;
   width:100%;
-  max-width:550px;
+  max-width:650px;
+  max-height:90vh;
+  overflow:auto;
   border-radius:18px;
   padding:25px;
 }
 
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+
 /* MOBILE */
 
-@media(max-width:1000px){
-  .grid{
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1050px){
+
+  .layout{
+    grid-template-columns:220px 1fr;
+  }
+
+  .grid4{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .grid-3{
+  .grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:750px){
+
+  .header{
+    padding:10px 14px;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
 
   .layout{
     display:block;
@@ -478,29 +520,33 @@ th{
 
   .sidebar{
     display:none;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .sidebar.open{
+    display:block;
   }
 
   main{
     padding:15px;
   }
 
-  .grid,
-  .grid-2,
-  .grid-3{
-    grid-template-columns:1fr;
-  }
-
   .hero{
-    padding:25px;
+    padding:28px;
   }
 
   .hero h1{
-    font-size:30px;
+    font-size:31px;
   }
 
-  .file-item{
-    flex-direction:column;
-    align-items:stretch;
+  .grid,
+  .grid4{
+    grid-template-columns:1fr;
+  }
+
+  .header-right .account-label{
+    display:none;
   }
 }
 </style>
@@ -508,372 +554,344 @@ th{
 
 <body>
 
-<!-- =========================================================
-     AUTHENTICATION
-========================================================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<div id="authPage" class="auth-page">
+<header>
 
-  <div class="auth-box">
+<div class="header">
 
-    <div class="auth-logo">
-      VAMP4
-    </div>
+  <div class="logo">
+    VAMP4
+  </div>
 
-    <h2 id="authTitle">
-      Welcome Back
-    </h2>
-
-    <p class="muted" style="margin:8px 0 20px;">
-      Earn, create and use powerful digital tools.
-    </p>
-
-    <div id="registerFields" class="hidden">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input id="registerName" type="text">
-      </div>
-
-    </div>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input id="authEmail" type="email">
-    </div>
-
-    <div class="form-group">
-      <label>Password</label>
-      <input id="authPassword" type="password">
-    </div>
+  <div class="header-right">
 
     <button
-      id="authButton"
-      class="btn btn-primary"
-      style="width:100%;"
-      onclick="handleAuth()">
-      Login
+      class="btn light mobile-menu"
+      onclick="toggleMenu()">
+      ☰
     </button>
 
-    <p
-      id="authMessage"
-      class="muted"
-      style="margin-top:15px;">
-    </p>
+    <button
+      class="btn secondary"
+      onclick="showPage('dashboard')">
+      👤 <span class="account-label">Account</span>
+    </button>
 
     <button
-      class="btn btn-secondary"
-      style="width:100%;margin-top:12px;"
-      onclick="toggleAuthMode()">
-
-      <span id="authSwitchText">
-        Create an account
-      </span>
-
+      class="btn danger"
+      onclick="logout()">
+      Logout
     </button>
 
   </div>
 
 </div>
 
-
-<!-- =========================================================
-     MAIN APPLICATION
-========================================================= -->
-
-<div id="app" class="hidden">
-
-<header>
-
-  <div class="header-inner">
-
-    <div class="logo">
-      VAMP4
-    </div>
-
-    <div class="header-actions">
-
-      <button
-        class="icon-btn"
-        onclick="toggleNotifications()">
-
-        🔔
-        <span
-          id="notificationCount"
-          class="badge">
-          0
-        </span>
-
-      </button>
-
-      <button
-        class="icon-btn"
-        onclick="showPage('profile')">
-
-        👤
-      </button>
-
-      <button
-        class="btn btn-danger"
-        onclick="logout()">
-
-        Logout
-
-      </button>
-
-    </div>
-
-  </div>
-
 </header>
 
 
 <div class="layout">
 
-<!-- =========================================================
+<!-- =====================================================
      SIDEBAR
-========================================================= -->
+===================================================== -->
 
-<aside class="sidebar">
+<aside id="sidebar" class="sidebar">
 
   <button
-    class="nav-btn active"
+    class="nav active"
+    onclick="showPage('home')">
+    🏠 Home
+  </button>
+
+  <button
+    class="nav"
     onclick="showPage('dashboard')">
-    🏠 Dashboard
+    📊 Dashboard
   </button>
+
 
   <div class="nav-title">
-    Earn
+    AI & Digital Services
   </div>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('earn')">
-    💰 Ways to Earn
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showPage('referrals')">
-    👥 Referrals
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showPage('wallet')">
-    💳 Rewards Wallet
-  </button>
-
-  <div class="nav-title">
-    Tools
-  </div>
-
-  <button
-    class="nav-btn"
-    onclick="showPage('ai')">
+  <button class="nav" onclick="showPage('ai')">
     🤖 AI Tools
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('pdf')">
+  <button class="nav" onclick="showPage('pdf')">
     📄 PDF Tools
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('files')">
+  <button class="nav" onclick="showPage('image')">
+    🖼️ Image Tools
+  </button>
+
+  <button class="nav" onclick="showPage('products')">
+    📦 Digital Products
+  </button>
+
+  <button class="nav" onclick="showPage('files')">
     📁 My Files
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('credits')">
-    ⚡ AI Credits
+
+  <div class="nav-title">
+    Education
+  </div>
+
+  <button class="nav" onclick="showPage('education')">
+    🎓 Education
   </button>
+
+  <button class="nav" onclick="showPage('english')">
+    🗣️ Spoken English
+  </button>
+
+  <button class="nav" onclick="showPage('subjects')">
+    📚 Subjects
+  </button>
+
+  <button class="nav" onclick="showPage('quiz')">
+    📝 Quizzes
+  </button>
+
+
+  <div class="nav-title">
+    Travel & Transport
+  </div>
+
+  <button class="nav" onclick="showPage('map')">
+    🗺️ Vamp4 Map
+  </button>
+
+  <button class="nav" onclick="showPage('bus')">
+    🚌 Bus Tracker
+  </button>
+
+  <button class="nav" onclick="showPage('train')">
+    🚆 Train Tracker
+  </button>
+
+  <button class="nav" onclick="showPage('flight')">
+    ✈️ Flight Tracker
+  </button>
+
 
   <div class="nav-title">
     Account
   </div>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('payments')">
-    💵 Payments
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showPage('subscriptions')">
+  <button class="nav" onclick="showPage('subscriptions')">
     ⭐ Subscriptions
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('profile')">
-    👤 Profile
+  <button class="nav" onclick="showPage('payments')">
+    💳 Payments
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('settings')">
-    ⚙️ Settings
+  <button class="nav" onclick="showPage('notifications')">
+    🔔 Notifications
   </button>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('support')">
-    🆘 Help & Support
+  <button class="nav" onclick="showPage('profile')">
+    ⚙️ Profile
   </button>
+
+  <button class="nav" onclick="showPage('support')">
+    🆘 Support
+  </button>
+
 
   <div class="nav-title">
-    Admin
+    Administration
   </div>
 
-  <button
-    class="nav-btn"
-    onclick="showPage('admin')">
-    🛠️ Admin Dashboard
+  <button class="nav" onclick="showPage('admin')">
+    🛠️ Admin
   </button>
 
 </aside>
 
 
-<!-- =========================================================
-     MAIN CONTENT
-========================================================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
 
 
-<!-- =========================================================
-     DASHBOARD
-========================================================= -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-<section
-  id="dashboard"
-  class="page">
+<section id="home" class="page">
 
   <div class="hero">
 
     <h1>
-      Welcome to Vamp4
+      Everything you need in one place.
     </h1>
 
     <p>
-      One platform for earning opportunities,
-      AI tools, PDF utilities, digital products,
-      referrals and rewards.
+      Vamp4 brings together AI tools, digital services,
+      education, document utilities, image tools,
+      digital products and travel information.
     </p>
 
-  </div>
-
-
-  <div class="grid">
-
-    <div class="card">
-      <span class="muted">
-        Reward Balance
-      </span>
-
-      <div
-        id="dashboardBalance"
-        class="stat-value">
-        ₹0.00
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="muted">
-        AI Credits
-      </span>
-
-      <div
-        id="dashboardCredits"
-        class="stat-value">
-        0
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="muted">
-        Referrals
-      </span>
-
-      <div
-        id="dashboardReferrals"
-        class="stat-value">
-        0
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="muted">
-        Files
-      </span>
-
-      <div
-        id="dashboardFiles"
-        class="stat-value">
-        0
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="grid-3" style="margin-top:20px;">
-
-    <div class="card">
-
-      <h3>Earn Money</h3>
-
-      <p class="muted">
-        Explore eligible earning programmes.
-      </p>
+    <div class="hero-actions">
 
       <button
-        class="btn btn-primary"
-        style="margin-top:15px;"
-        onclick="showPage('earn')">
-        Explore
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>AI Tools</h3>
-
-      <p class="muted">
-        Use your available AI credits.
-      </p>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:15px;"
+        class="btn secondary"
         onclick="showPage('ai')">
-        Open AI
+        Explore AI
+      </button>
+
+      <button
+        class="btn secondary"
+        onclick="showPage('education')">
+        Start Learning
+      </button>
+
+      <button
+        class="btn secondary"
+        onclick="showPage('map')">
+        Open Vamp4 Map
       </button>
 
     </div>
 
+  </div>
+
+
+  <div class="grid4">
 
     <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI Tools</h3>
+      <p>
+        Chat, writing, translation, summarisation
+        and learning assistance.
+      </p>
+    </div>
 
+    <div class="card">
+      <div class="icon">📄</div>
       <h3>PDF Tools</h3>
-
-      <p class="muted">
-        Upload and process your documents.
+      <p>
+        Create and manage supported documents.
       </p>
+    </div>
 
-      <button
-        class="btn btn-primary"
-        style="margin-top:15px;"
-        onclick="showPage('pdf')">
-        Open PDF
-      </button>
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>Education</h3>
+      <p>
+        Learn languages, mathematics, science,
+        computing and more.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚌</div>
+      <h3>Travel</h3>
+      <p>
+        Maps, bus, train and flight utilities.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="page hidden">
+
+  <h1>📊 My Dashboard</h1>
+
+  <p class="subtitle">
+    Your Vamp4 account overview.
+  </p>
+
+  <div class="grid4">
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI Usage</h3>
+      <div class="stat-number" id="aiUsage">
+        0
+      </div>
+      <p>Requests</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📦</div>
+      <h3>Products</h3>
+      <div class="stat-number" id="productCount">
+        0
+      </div>
+      <p>Your products</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>Courses</h3>
+      <div class="stat-number" id="courseCount">
+        0
+      </div>
+      <p>Learning progress</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⭐</div>
+      <h3>Plan</h3>
+      <div class="stat-number" id="userPlan">
+        Free
+      </div>
+      <p>Current plan</p>
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <h2>Recent Activity</h2>
+
+    <div class="table-wrap">
+
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="activityTable">
+
+          <tr>
+            <td>Account</td>
+            <td>Today</td>
+            <td>
+              <span class="badge badge-success">
+                Active
+              </span>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
 
     </div>
 
@@ -882,354 +900,114 @@ th{
 </section>
 
 
-<!-- =========================================================
-     WAYS TO EARN
-========================================================= -->
+<!-- =====================================================
+     AI
+===================================================== -->
 
-<section
-  id="earn"
-  class="page hidden">
+<section id="ai" class="page hidden">
 
-  <h1>Ways to Earn</h1>
+  <h1>🤖 AI Tools</h1>
 
-  <p class="page-subtitle">
-    Choose eligible Vamp4 earning programmes.
+  <p class="subtitle">
+    Your AI workspace.
   </p>
 
-
-  <div class="grid-3">
-
-    <div class="card">
-      <h3>Complete Tasks</h3>
-      <p class="muted">
-        Complete eligible tasks and receive rewards.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        View Tasks
-      </button>
-    </div>
+  <div class="grid">
 
     <div class="card">
-      <h3>Surveys & Offers</h3>
-      <p class="muted">
-        Participate in approved surveys and offers.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        View Offers
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Affiliate Programme</h3>
-      <p class="muted">
-        Promote eligible products and services.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        Start
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Digital Products</h3>
-      <p class="muted">
-        Sell eligible digital products.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        Sell
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Creator Rewards</h3>
-      <p class="muted">
-        Participate in qualifying creator programmes.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        Learn More
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Promotional Campaigns</h3>
-      <p class="muted">
-        Join eligible promotional campaigns.
-      </p>
-      <button class="btn btn-primary"
-              style="margin-top:15px;">
-        View Campaigns
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     AI TOOLS
-========================================================= -->
-
-<section
-  id="ai"
-  class="page hidden">
-
-  <h1>AI Tools</h1>
-
-  <p class="page-subtitle">
-    AI features use your Vamp4 credit balance.
-  </p>
-
-
-  <div class="grid-3">
-
-    <div class="card">
+      <div class="icon">💬</div>
       <h3>AI Chat</h3>
-      <p class="muted">
-        Ask questions and receive AI responses.
-      </p>
-      <button
-        class="btn btn-primary"
-        onclick="openAITool('AI Chat')">
-        Open
-      </button>
+      <p>Ask questions and get assistance.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('AI Chat')">
+          Open
+        </button>
+      </div>
     </div>
 
     <div class="card">
+      <div class="icon">✍️</div>
       <h3>AI Writer</h3>
-      <p class="muted">
-        Create articles, emails and other content.
-      </p>
-      <button
-        class="btn btn-primary"
-        onclick="openAITool('AI Writer')">
-        Open
-      </button>
+      <p>Create drafts, emails and articles.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('AI Writer')">
+          Open
+        </button>
+      </div>
     </div>
 
     <div class="card">
-      <h3>AI Summariser</h3>
-      <p class="muted">
-        Summarise supplied text.
-      </p>
-      <button
-        class="btn btn-primary"
-        onclick="openAITool('AI Summariser')">
-        Open
-      </button>
-    </div>
-
-    <div class="card">
+      <div class="icon">🌐</div>
       <h3>AI Translator</h3>
-      <p class="muted">
-        Translate supported content.
-      </p>
-      <button
-        class="btn btn-primary"
-        onclick="openAITool('AI Translator')">
-        Open
-      </button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     PDF TOOLS
-========================================================= -->
-
-<section
-  id="pdf"
-  class="page hidden">
-
-  <h1>PDF Tools</h1>
-
-  <p class="page-subtitle">
-    Upload PDFs and use available document tools.
-  </p>
-
-
-  <div class="grid-2">
-
-    <div class="card">
-
-      <h2>Upload PDF</h2>
-
-      <div class="form-group">
-
-        <label>Select PDF</label>
-
-        <input
-          id="pdfUpload"
-          type="file"
-          accept="application/pdf">
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        onclick="uploadPDF()">
-
-        Upload PDF
-
-      </button>
-
-      <p
-        id="pdfStatus"
-        class="muted"
-        style="margin-top:12px;">
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>Merge PDFs</h2>
-
-      <div class="form-group">
-
-        <label>Select PDFs</label>
-
-        <input
-          id="mergePDFs"
-          type="file"
-          multiple
-          accept="application/pdf">
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        onclick="mergePDFs()">
-
-        Merge
-
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>Extract Pages</h2>
-
-      <input
-        id="pageNumbers"
-        placeholder="Example: 1,3,5">
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:10px;"
-        onclick="extractPages()">
-
-        Extract
-
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h2>PDF AI Summary</h2>
-
-      <p class="muted">
-        Extract text and create an AI summary.
-      </p>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:15px;"
-        onclick="pdfSummary()">
-
-        Summarise PDF
-
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     MY FILES
-========================================================= -->
-
-<section
-  id="files"
-  class="page hidden">
-
-  <h1>My Files</h1>
-
-  <p class="page-subtitle">
-    Manage your uploaded documents.
-  </p>
-
-
-  <div class="card">
-
-    <strong>
-      Storage
-    </strong>
-
-    <p
-      id="storageText"
-      class="muted"
-      style="margin-top:8px;">
-      35 MB / 100 MB
-    </p>
-
-    <div class="storage-bar">
-
-      <div
-        class="storage-progress">
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="fileList"
-    style="margin-top:20px;">
-
-    <div class="file-item">
-
-      <div>
-        <strong>
-          example.pdf
-        </strong>
-
-        <p class="muted">
-          2.4 MB
-        </p>
-      </div>
-
-      <div class="file-actions">
-
-        <button
-          class="btn btn-secondary">
-          Download
+      <p>Translate supported languages.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('Translator')">
+          Open
         </button>
+      </div>
+    </div>
 
-        <button
-          class="btn btn-danger"
-          onclick="deleteDemoFile(this)">
-          Delete
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>AI Summariser</h3>
+      <p>Summarise supplied text.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('Summariser')">
+          Open
         </button>
-
       </div>
+    </div>
 
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Idea Generator</h3>
+      <p>Generate project and content ideas.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('Idea Generator')">
+          Open
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>AI Tutor</h3>
+      <p>Get educational explanations.</p>
+      <div class="card-actions">
+        <button class="btn primary"
+                onclick="openAI('AI Tutor')">
+          Open
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <h2>AI Workspace</h2>
+
+    <textarea
+      id="aiPrompt"
+      placeholder="Ask Vamp4 AI something..."></textarea>
+
+    <button
+      class="btn primary"
+      style="margin-top:12px"
+      onclick="sendAI()">
+      Send
+    </button>
+
+    <div
+      id="aiResponse"
+      class="tool-result">
+      AI response will appear here.
     </div>
 
   </div>
@@ -1237,256 +1015,240 @@ th{
 </section>
 
 
-<!-- =========================================================
-     AI CREDITS
-========================================================= -->
+<!-- =====================================================
+     PDF
+===================================================== -->
 
-<section
-  id="credits"
-  class="page hidden">
+<section id="pdf" class="page hidden">
 
-  <h1>AI Credits</h1>
+  <h1>📄 PDF Tools</h1>
 
-  <p class="page-subtitle">
-    Credits are used for eligible AI features.
+  <p class="subtitle">
+    Work with documents using Vamp4.
   </p>
-
-
-  <div class="grid-3">
-
-    <div class="card">
-
-      <span class="muted">
-        Available Credits
-      </span>
-
-      <div class="stat-value">
-        250
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <span class="muted">
-        Used This Month
-      </span>
-
-      <div class="stat-value">
-        75
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <span class="muted">
-        Credits Purchased
-      </span>
-
-      <div class="stat-value">
-        325
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="card" style="margin-top:20px;">
-
-    <h2>Buy Credits</h2>
-
-    <div class="grid-3">
-
-      <button
-        class="btn btn-secondary"
-        onclick="buyCredits(100)">
-        100 Credits
-      </button>
-
-      <button
-        class="btn btn-secondary"
-        onclick="buyCredits(500)">
-        500 Credits
-      </button>
-
-      <button
-        class="btn btn-secondary"
-        onclick="buyCredits(1000)">
-        1,000 Credits
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     WALLET
-========================================================= -->
-
-<section
-  id="wallet"
-  class="page hidden">
-
-  <h1>Rewards Wallet</h1>
-
-  <p class="page-subtitle">
-    Your withdrawable rewards balance.
-  </p>
-
 
   <div class="grid">
 
     <div class="card">
 
-      <span class="muted">
-        Available
-      </span>
+      <h3>Text → PDF</h3>
 
-      <div class="stat-value">
-        ₹2,500
+      <textarea
+        id="pdfText"
+        placeholder="Enter your text..."></textarea>
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="createTextPDF()">
+        Create PDF
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Images → PDF</h3>
+
+      <input
+        id="pdfImages"
+        type="file"
+        accept="image/*"
+        multiple>
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="imagesToPDF()">
+        Create PDF
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>PDF Upload</h3>
+
+      <input
+        id="pdfUpload"
+        type="file"
+        accept=".pdf,application/pdf">
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="uploadPDF()">
+        Upload
+      </button>
+
+      <div
+        id="pdfStatus"
+        class="tool-result">
       </div>
 
     </div>
 
+
     <div class="card">
 
-      <span class="muted">
-        Pending
-      </span>
+      <h3>Merge PDF</h3>
 
-      <div class="stat-value">
-        ₹500
-      </div>
+      <input
+        type="file"
+        accept=".pdf"
+        multiple>
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="pdfToolNotice('Merge')">
+        Merge
+      </button>
 
     </div>
 
+
     <div class="card">
 
-      <span class="muted">
-        Lifetime Earned
-      </span>
+      <h3>Split PDF</h3>
 
-      <div class="stat-value">
-        ₹8,500
-      </div>
+      <input
+        type="file"
+        accept=".pdf">
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="pdfToolNotice('Split')">
+        Split
+      </button>
 
     </div>
 
+
     <div class="card">
 
-      <span class="muted">
-        Lifetime Withdrawn
-      </span>
+      <h3>Compress PDF</h3>
 
-      <div class="stat-value">
-        ₹6,000
-      </div>
+      <input
+        type="file"
+        accept=".pdf">
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="pdfToolNotice('Compress')">
+        Compress
+      </button>
 
     </div>
 
   </div>
 
+</section>
 
-  <div class="card" style="margin-top:20px;">
 
-    <h2>Request Withdrawal</h2>
+<!-- =====================================================
+     IMAGE
+===================================================== -->
 
-    <p class="muted">
-      Minimum withdrawal: ₹500
-    </p>
+<section id="image" class="page hidden">
 
-    <div class="form-group"
-         style="margin-top:15px;">
+  <h1>🖼️ Image Tools</h1>
 
-      <label>Amount</label>
+  <p class="subtitle">
+    Convert, resize and compress images.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>Image Converter</h3>
 
       <input
-        id="withdrawAmount"
-        type="number"
-        min="500"
-        placeholder="500">
+        id="imageFile"
+        type="file"
+        accept="image/*">
 
-    </div>
+      <select
+        id="imageFormat"
+        style="margin-top:10px">
 
-    <div class="form-group">
-
-      <label>Payment Method</label>
-
-      <select id="withdrawMethod">
-
-        <option value="paypal">
-          PayPal
-        </option>
-
-        <option value="bank_transfer">
-          Bank Transfer
-        </option>
+        <option value="png">PNG</option>
+        <option value="jpeg">JPG</option>
+        <option value="webp">WEBP</option>
 
       </select>
 
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="convertImage()">
+        Convert
+      </button>
+
     </div>
 
-    <button
-      class="btn btn-primary"
-      onclick="requestWithdrawal()">
 
-      Request Withdrawal
+    <div class="card">
 
-    </button>
+      <h3>Resize & Compress</h3>
 
-    <p
-      id="withdrawStatus"
-      class="muted"
-      style="margin-top:10px;">
-    </p>
+      <input
+        id="advancedImage"
+        type="file"
+        accept="image/*">
 
-  </div>
+      <input
+        id="resizeWidth"
+        type="number"
+        placeholder="Width"
+        style="margin-top:10px">
+
+      <input
+        id="resizeHeight"
+        type="number"
+        placeholder="Height"
+        style="margin-top:8px">
+
+      <label style="margin-top:10px">
+        Quality
+      </label>
+
+      <input
+        id="imageQuality"
+        type="range"
+        min="10"
+        max="100"
+        value="90">
+
+      <button
+        class="btn primary"
+        style="margin-top:12px"
+        onclick="resizeAndCompressImage()">
+        Process
+      </button>
+
+    </div>
 
 
-  <div class="card" style="margin-top:20px;">
+    <div class="card">
 
-    <h2>Withdrawal History</h2>
+      <h3>Image Information</h3>
 
-    <div class="table-wrap">
+      <input
+        id="infoImage"
+        type="file"
+        accept="image/*"
+        onchange="imageInfo()">
 
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>ID</th>
-            <th>Amount</th>
-            <th>Method</th>
-            <th>Status</th>
-            <th>Date</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>#1001</td>
-            <td>₹1,000</td>
-            <td>PayPal</td>
-            <td>
-              <span class="status status-success">
-                Completed
-              </span>
-            </td>
-            <td>2026-08-20</td>
-          </tr>
-
-        </tbody>
-
-      </table>
+      <div
+        id="imageInfoResult"
+        class="tool-result">
+      </div>
 
     </div>
 
@@ -1495,73 +1257,205 @@ th{
 </section>
 
 
-<!-- =========================================================
-     REFERRALS
-========================================================= -->
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
 
-<section
-  id="referrals"
-  class="page hidden">
+<section id="products" class="page hidden">
 
-  <h1>Refer & Earn</h1>
+  <h1>📦 Digital Products</h1>
 
-  <p class="page-subtitle">
-    Invite users through your referral link.
+  <p class="subtitle">
+    Create and manage digital products.
   </p>
 
 
-  <div class="card">
+  <div class="grid">
 
-    <h2>Your Referral Code</h2>
+    <div class="card">
 
-    <input
-      id="referralCode"
-      value="VAMP4ABC"
-      readonly>
+      <h2>Create Product</h2>
 
-    <button
-      class="btn btn-primary"
-      style="margin-top:10px;"
-      onclick="copyReferral()">
+      <form
+        class="form"
+        onsubmit="createProduct(event)">
 
-      Copy Referral Link
+        <div>
+          <label>Product Name</label>
 
-    </button>
+          <input
+            id="productName"
+            placeholder="Example: English Guide"
+            required>
+        </div>
+
+        <div>
+          <label>Category</label>
+
+          <select id="productCategory">
+
+            <option>eBook</option>
+            <option>PDF</option>
+            <option>Course</option>
+            <option>Template</option>
+            <option>Graphics</option>
+            <option>Audio</option>
+            <option>Video</option>
+            <option>Software</option>
+            <option>Other</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Description</label>
+
+          <textarea
+            id="productDescription"
+            required></textarea>
+        </div>
+
+        <div>
+          <label>Price</label>
+
+          <input
+            id="productPrice"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="299"
+            required>
+        </div>
+
+        <div>
+          <label>Cover Image</label>
+
+          <input
+            id="productCover"
+            type="file"
+            accept="image/*">
+        </div>
+
+        <div>
+          <label>Digital File</label>
+
+          <input
+            id="productFile"
+            type="file"
+            required>
+        </div>
+
+        <button
+          class="btn primary"
+          type="submit">
+          Create Product
+        </button>
+
+      </form>
+
+      <p
+        id="productMessage"
+        style="margin-top:15px">
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>Product Preview</h2>
+
+      <div id="productPreview">
+
+        <div class="icon">
+          📦
+        </div>
+
+        <h3>
+          Your Product
+        </h3>
+
+        <p>
+          Product preview will appear here.
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
 
-  <div class="grid-3"
-       style="margin-top:20px;">
+  <div style="margin-top:30px">
 
-    <div class="card">
-      <span class="muted">
-        Total Referrals
-      </span>
+    <h2>🛒 Marketplace</h2>
 
-      <div class="stat-value">
-        25
+    <div
+      id="productGrid"
+      class="grid"
+      style="margin-top:15px">
+
+      <div class="card">
+
+        <div class="icon">
+          📕
+        </div>
+
+        <h3>
+          Spoken English Guide
+        </h3>
+
+        <p>
+          Beginner learning material.
+        </p>
+
+        <div class="price">
+          ₹199
+        </div>
+
+        <div class="card-actions">
+
+          <button
+            class="btn primary"
+            onclick="purchaseProduct('demo-1')">
+            Buy
+          </button>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="card">
-      <span class="muted">
-        Qualified
-      </span>
 
-      <div class="stat-value">
-        18
+      <div class="card">
+
+        <div class="icon">
+          📋
+        </div>
+
+        <h3>
+          Business Template Pack
+        </h3>
+
+        <p>
+          Useful business templates.
+        </p>
+
+        <div class="price">
+          ₹299
+        </div>
+
+        <div class="card-actions">
+
+          <button
+            class="btn primary"
+            onclick="purchaseProduct('demo-2')">
+            Buy
+          </button>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="card">
-      <span class="muted">
-        Rewards
-      </span>
-
-      <div class="stat-value">
-        ₹900
-      </div>
     </div>
 
   </div>
@@ -1569,57 +1463,66 @@ th{
 </section>
 
 
-<!-- =========================================================
-     PAYMENTS
-========================================================= -->
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
 
-<section
-  id="payments"
-  class="page hidden">
+<section id="education" class="page hidden">
 
-  <h1>Payments</h1>
+  <h1>🎓 Vamp4 Education</h1>
 
-  <p class="page-subtitle">
-    Your payment transaction history.
+  <p class="subtitle">
+    Learn useful academic and practical subjects.
   </p>
 
+  <div class="grid4">
 
-  <div class="card">
+    <div class="card">
+      <div class="icon">🗣️</div>
+      <h3>Spoken English</h3>
+      <p>Conversation and speaking practice.</p>
+    </div>
 
-    <div class="table-wrap">
+    <div class="card">
+      <div class="icon">📖</div>
+      <h3>English Grammar</h3>
+      <p>Grammar lessons and exercises.</p>
+    </div>
 
-      <table>
+    <div class="card">
+      <div class="icon">🔢</div>
+      <h3>Mathematics</h3>
+      <p>Arithmetic, algebra and geometry.</p>
+    </div>
 
-        <thead>
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h3>Science</h3>
+      <p>Physics, chemistry and biology.</p>
+    </div>
 
-          <tr>
-            <th>Transaction</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Date</th>
-          </tr>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Computer Science</h3>
+      <p>Computers, coding and technology.</p>
+    </div>
 
-        </thead>
+    <div class="card">
+      <div class="icon">💼</div>
+      <h3>Business</h3>
+      <p>Business and entrepreneurship.</p>
+    </div>
 
-        <tbody>
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Languages</h3>
+      <p>Learn additional languages.</p>
+    </div>
 
-          <tr>
-            <td>#PAY1001</td>
-            <td>AI Credits</td>
-            <td>₹199</td>
-            <td>
-              <span class="status status-success">
-                Paid
-              </span>
-            </td>
-            <td>2026-08-20</td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
+    <div class="card">
+      <div class="icon">📈</div>
+      <h3>Financial Literacy</h3>
+      <p>Learn basic financial concepts.</p>
     </div>
 
   </div>
@@ -1627,38 +1530,481 @@ th{
 </section>
 
 
-<!-- =========================================================
-     SUBSCRIPTIONS
-========================================================= -->
+<!-- =====================================================
+     ENGLISH
+===================================================== -->
 
-<section
-  id="subscriptions"
-  class="page hidden">
+<section id="english" class="page hidden">
 
-  <h1>Subscriptions</h1>
+  <h1>🗣️ Spoken English</h1>
 
-  <p class="page-subtitle">
-    Choose the plan that fits your usage.
+  <p class="subtitle">
+    Improve everyday English communication.
   </p>
 
-
-  <div class="grid-3">
+  <div class="grid">
 
     <div class="card">
 
-      <h2>Free</h2>
-
-      <div class="stat-value">
-        ₹0
+      <div class="icon">
+        🟢
       </div>
 
-      <p class="muted">
-        Basic access
+      <h3>Beginner</h3>
+
+      <p>
+        Greetings, introductions and basic sentences.
       </p>
 
       <button
-        class="btn btn-secondary"
-        style="margin-top:20px;">
+        class="btn primary"
+        style="margin-top:15px"
+        onclick="lesson('Beginner')">
+        Start Lesson
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">
+        🟡
+      </div>
+
+      <h3>Intermediate</h3>
+
+      <p>
+        Conversations and workplace English.
+      </p>
+
+      <button
+        class="btn primary"
+        style="margin-top:15px"
+        onclick="lesson('Intermediate')">
+        Start Lesson
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">
+        🔴
+      </div>
+
+      <h3>Advanced</h3>
+
+      <p>
+        Fluency, presentations and advanced vocabulary.
+      </p>
+
+      <button
+        class="btn primary"
+        style="margin-top:15px"
+        onclick="lesson('Advanced')">
+        Start Lesson
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUBJECTS
+===================================================== -->
+
+<section id="subjects" class="page hidden">
+
+  <h1>📚 All Subjects</h1>
+
+  <p class="subtitle">
+    Explore learning categories.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Mathematics</h3>
+      <p>Numbers, algebra, geometry and statistics.</p>
+    </div>
+
+    <div class="card">
+      <h3>Physics</h3>
+      <p>Motion, energy, electricity and more.</p>
+    </div>
+
+    <div class="card">
+      <h3>Chemistry</h3>
+      <p>Matter, reactions and chemical concepts.</p>
+    </div>
+
+    <div class="card">
+      <h3>Biology</h3>
+      <p>Cells, organisms and life sciences.</p>
+    </div>
+
+    <div class="card">
+      <h3>History</h3>
+      <p>Historical events and civilizations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Geography</h3>
+      <p>Earth, places and environments.</p>
+    </div>
+
+    <div class="card">
+      <h3>Programming</h3>
+      <p>HTML, CSS, JavaScript and programming concepts.</p>
+    </div>
+
+    <div class="card">
+      <h3>Business</h3>
+      <p>Business and entrepreneurship fundamentals.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section id="quiz" class="page hidden">
+
+  <h1>📝 Learning Quiz</h1>
+
+  <p class="subtitle">
+    Test your knowledge.
+  </p>
+
+  <div class="card">
+
+    <h3>
+      What is the capital of India?
+    </h3>
+
+    <br>
+
+    <label>
+      <input
+        type="radio"
+        name="q1"
+        value="correct">
+      New Delhi
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="q1"
+        value="wrong">
+      Mumbai
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="q1"
+        value="wrong">
+      Chennai
+    </label>
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="checkQuiz()">
+      Check Answer
+    </button>
+
+    <div
+      id="quizResult"
+      class="tool-result">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAP
+===================================================== -->
+
+<section id="map" class="page hidden">
+
+  <h1>🗺️ Vamp4 Map</h1>
+
+  <p class="subtitle">
+    Search places and plan routes.
+  </p>
+
+  <div class="card">
+
+    <div class="grid">
+
+      <div>
+        <label>From</label>
+
+        <input
+          id="mapFrom"
+          placeholder="Starting location">
+      </div>
+
+      <div>
+        <label>To</label>
+
+        <input
+          id="mapTo"
+          placeholder="Destination">
+      </div>
+
+      <div>
+        <label>Transport</label>
+
+        <select id="mapTransport">
+
+          <option>Driving</option>
+          <option>Bus</option>
+          <option>Train</option>
+          <option>Walking</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="findRoute()">
+      Find Route
+    </button>
+
+  </div>
+
+
+  <div class="map-box">
+
+    <div class="map-road"></div>
+
+    <div class="map-marker">
+      📍
+    </div>
+
+  </div>
+
+  <div
+    id="routeResult"
+    class="tool-result">
+    Enter a route to begin.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     BUS
+===================================================== -->
+
+<section id="bus" class="page hidden">
+
+  <h1>🚌 Bus Time & Route Tracker</h1>
+
+  <p class="subtitle">
+    Search bus routes, stops and schedule information.
+  </p>
+
+  <div class="card">
+
+    <div class="grid">
+
+      <div>
+        <label>From</label>
+
+        <input
+          id="busFrom"
+          placeholder="Starting stop">
+      </div>
+
+      <div>
+        <label>To</label>
+
+        <input
+          id="busTo"
+          placeholder="Destination">
+      </div>
+
+      <div>
+        <label>Bus Number</label>
+
+        <input
+          id="busNumber"
+          placeholder="Example: 21G">
+      </div>
+
+    </div>
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="searchBus()">
+      Search Bus
+    </button>
+
+  </div>
+
+  <div
+    id="busResults"
+    class="card"
+    style="margin-top:20px">
+    Enter route information.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRAIN
+===================================================== -->
+
+<section id="train" class="page hidden">
+
+  <h1>🚆 Train Time & Route Tracker</h1>
+
+  <p class="subtitle">
+    Search trains and routes.
+  </p>
+
+  <div class="card">
+
+    <div class="grid">
+
+      <div>
+        <label>From Station</label>
+
+        <input
+          id="trainFrom"
+          placeholder="Station">
+      </div>
+
+      <div>
+        <label>To Station</label>
+
+        <input
+          id="trainTo"
+          placeholder="Destination">
+      </div>
+
+      <div>
+        <label>Train Number</label>
+
+        <input
+          id="trainNumber"
+          placeholder="Train number">
+      </div>
+
+    </div>
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="searchTrain()">
+      Search Train
+    </button>
+
+  </div>
+
+  <div
+    id="trainResults"
+    class="card"
+    style="margin-top:20px">
+    Enter train information.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FLIGHT
+===================================================== -->
+
+<section id="flight" class="page hidden">
+
+  <h1>✈️ Flight Tracker</h1>
+
+  <p class="subtitle">
+    Search flight information.
+  </p>
+
+  <div class="card">
+
+    <label>
+      Flight Number
+    </label>
+
+    <input
+      id="flightNumber"
+      placeholder="Example: AI101">
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="searchFlight()">
+      Track Flight
+    </button>
+
+  </div>
+
+  <div
+    id="flightResults"
+    class="card"
+    style="margin-top:20px">
+    Enter a flight number.
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUBSCRIPTIONS
+===================================================== -->
+
+<section id="subscriptions" class="page hidden">
+
+  <h1>⭐ Subscriptions</h1>
+
+  <p class="subtitle">
+    Choose a Vamp4 plan.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="icon">🆓</div>
+
+      <h2>Free</h2>
+
+      <div class="price">
+        ₹0
+      </div>
+
+      <p>
+        Basic access to selected services.
+      </p>
+
+      <button
+        class="btn success-btn"
+        style="margin-top:15px">
         Current Plan
       </button>
 
@@ -1667,47 +2013,47 @@ th{
 
     <div class="card">
 
+      <div class="icon">⭐</div>
+
       <h2>Pro</h2>
 
-      <div class="stat-value">
-        ₹299
+      <div class="price">
+        ₹299/month
       </div>
 
-      <p class="muted">
-        More AI credits and storage.
+      <p>
+        Higher limits and additional features.
       </p>
 
       <button
-        class="btn btn-primary"
-        style="margin-top:20px;"
-        onclick="subscribe('Pro')">
-
-        Upgrade
-
+        class="btn primary"
+        style="margin-top:15px"
+        onclick="startPayment('Pro')">
+        Subscribe
       </button>
 
     </div>
 
 
     <div class="card">
+
+      <div class="icon">💎</div>
 
       <h2>Premium</h2>
 
-      <div class="stat-value">
-        ₹799
+      <div class="price">
+        ₹799/month
       </div>
 
-      <p class="muted">
-        Higher limits and advanced features.
+      <p>
+        Advanced access and higher limits.
       </p>
 
       <button
-        class="btn btn-primary"
-        style="margin-top:20px;"
-        onclick="subscribe('Premium')">
-
-        Upgrade
-
+        class="btn primary"
+        style="margin-top:15px"
+        onclick="startPayment('Premium')">
+        Subscribe
       </button>
 
     </div>
@@ -1717,297 +2063,281 @@ th{
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
+     PAYMENTS
+===================================================== -->
+
+<section id="payments" class="page hidden">
+
+  <h1>💳 Payments</h1>
+
+  <p class="subtitle">
+    Secure payment interface.
+  </p>
+
+  <div class="card">
+
+    <h2>PayPal Checkout</h2>
+
+    <p>
+      Payment processing will be handled by the secure
+      Vamp4 backend.
+    </p>
+
+    <br>
+
+    <button
+      class="btn primary"
+      onclick="startPayment('Custom')">
+      Continue to Payment
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FILES
+===================================================== -->
+
+<section id="files" class="page hidden">
+
+  <h1>📁 My Files</h1>
+
+  <p class="subtitle">
+    Manage your uploaded documents and images.
+  </p>
+
+  <div class="card">
+
+    <input
+      id="generalFiles"
+      type="file"
+      multiple>
+
+    <button
+      class="btn primary"
+      style="margin-top:12px"
+      onclick="uploadGeneralFiles()">
+      Upload Files
+    </button>
+
+    <div
+      id="fileStatus"
+      class="tool-result">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
+
+<section id="notifications" class="page hidden">
+
+  <h1>🔔 Notifications</h1>
+
+  <div class="card">
+
+    <h3>
+      Welcome to Vamp4
+    </h3>
+
+    <p>
+      Your Vamp4 dashboard is ready.
+    </p>
+
+    <hr style="margin:18px 0">
+
+    <h3>
+      Travel Tools
+    </h3>
+
+    <p>
+      Bus, train, flight and map services are available.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
      PROFILE
-========================================================= -->
+===================================================== -->
 
-<section
-  id="profile"
-  class="page hidden">
+<section id="profile" class="page hidden">
 
-  <h1>Profile</h1>
+  <h1>⚙️ My Profile</h1>
 
   <div class="card">
 
-    <div class="form-group">
+    <form class="form"
+          onsubmit="saveProfile(event)">
 
-      <label>Full Name</label>
+      <div>
 
-      <input
-        id="profileName"
-        value="Vamp4 User">
+        <label>
+          Name
+        </label>
 
-    </div>
+        <input
+          id="profileName"
+          placeholder="Your name">
 
-
-    <div class="form-group">
-
-      <label>Email</label>
-
-      <input
-        value="user@example.com"
-        readonly>
-
-    </div>
+      </div>
 
 
-    <button
-      class="btn btn-primary"
-      onclick="saveProfile()">
+      <div>
 
-      Save Profile
+        <label>
+          Email
+        </label>
 
-    </button>
+        <input
+          id="profileEmail"
+          type="email"
+          placeholder="Your email">
+
+      </div>
+
+
+      <button
+        class="btn primary">
+        Save Profile
+      </button>
+
+    </form>
+
+    <p
+      id="profileMessage"
+      style="margin-top:15px">
+    </p>
 
   </div>
 
 </section>
 
 
-<!-- =========================================================
-     SETTINGS
-========================================================= -->
-
-<section
-  id="settings"
-  class="page hidden">
-
-  <h1>Settings</h1>
-
-  <div class="card">
-
-    <h2>Account Settings</h2>
-
-    <label style="margin-top:15px;">
-      <input
-        type="checkbox"
-        style="width:auto;">
-      Email notifications
-    </label>
-
-    <label style="margin-top:15px;">
-      <input
-        type="checkbox"
-        style="width:auto;">
-      Security alerts
-    </label>
-
-    <label style="margin-top:15px;">
-      <input
-        type="checkbox"
-        style="width:auto;">
-      Promotional messages
-    </label>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
+<!-- =====================================================
      SUPPORT
-========================================================= -->
+===================================================== -->
 
-<section
-  id="support"
-  class="page hidden">
+<section id="support" class="page hidden">
 
-  <h1>Help & Support</h1>
-
-  <p class="page-subtitle">
-    Contact Vamp4 support.
-  </p>
-
+  <h1>🆘 Help & Support</h1>
 
   <div class="card">
 
-    <div class="form-group">
+    <form
+      class="form"
+      onsubmit="submitSupport(event)">
 
-      <label>Subject</label>
+      <div>
 
-      <input
-        id="supportSubject"
-        placeholder="How can we help?">
+        <label>
+          Subject
+        </label>
 
-    </div>
+        <input
+          id="supportSubject"
+          required>
 
-
-    <div class="form-group">
-
-      <label>Message</label>
-
-      <textarea
-        id="supportMessage"
-        rows="7"
-        placeholder="Describe your issue...">
-      </textarea>
-
-    </div>
+      </div>
 
 
-    <button
-      class="btn btn-primary"
-      onclick="submitSupport()">
+      <div>
 
-      Submit Ticket
+        <label>
+          Message
+        </label>
 
-    </button>
+        <textarea
+          id="supportMessage"
+          required></textarea>
+
+      </div>
+
+
+      <button
+        class="btn primary">
+        Submit Ticket
+      </button>
+
+    </form>
 
   </div>
 
 </section>
 
 
-<!-- =========================================================
-     ADMIN DASHBOARD
-========================================================= -->
+<!-- =====================================================
+     ADMIN
+===================================================== -->
 
-<section
-  id="admin"
-  class="page hidden">
+<section id="admin" class="page hidden">
 
-  <h1>Admin Dashboard</h1>
+  <h1>🛠️ Admin Dashboard</h1>
 
-  <p class="page-subtitle">
-    Restricted administration area.
+  <p class="subtitle">
+    Administration interface.
   </p>
 
-
-  <div class="grid">
+  <div class="grid4">
 
     <div class="card">
-      <span class="muted">
-        Users
-      </span>
-      <div class="stat-value">
-        12,450
-      </div>
+      <h3>Users</h3>
+      <div class="stat-number">0</div>
     </div>
 
     <div class="card">
-      <span class="muted">
-        Revenue
-      </span>
-      <div class="stat-value">
-        ₹4.8L
-      </div>
+      <h3>Products</h3>
+      <div class="stat-number">0</div>
     </div>
 
     <div class="card">
-      <span class="muted">
-        Withdrawals
-      </span>
-      <div class="stat-value">
-        ₹1.2L
-      </div>
+      <h3>Subscriptions</h3>
+      <div class="stat-number">0</div>
     </div>
 
     <div class="card">
-      <span class="muted">
-        Referrals
-      </span>
-      <div class="stat-value">
-        3,240
-      </div>
+      <h3>Payments</h3>
+      <div class="stat-number">0</div>
     </div>
 
   </div>
 
 
-  <div class="card" style="margin-top:20px;">
+  <div class="card" style="margin-top:20px">
 
-    <h2>Withdrawal Requests</h2>
+    <h2>Admin Functions</h2>
 
-    <div class="table-wrap">
+    <div class="card-actions">
 
-      <table>
+      <button class="btn secondary">
+        Manage Users
+      </button>
 
-        <thead>
+      <button class="btn secondary">
+        Manage Products
+      </button>
 
-          <tr>
-            <th>ID</th>
-            <th>User</th>
-            <th>Amount</th>
-            <th>Method</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
+      <button class="btn secondary">
+        Manage Courses
+      </button>
 
-        </thead>
+      <button class="btn secondary">
+        Payment Reports
+      </button>
 
-        <tbody>
+      <button class="btn secondary">
+        System Settings
+      </button>
 
-          <tr>
-
-            <td>#5001</td>
-
-            <td>
-              user@example.com
-            </td>
-
-            <td>
-              ₹1,000
-            </td>
-
-            <td>
-              PayPal
-            </td>
-
-            <td>
-              <span class="status status-pending">
-                Pending
-              </span>
-            </td>
-
-            <td>
-
-              <button
-                class="btn btn-success"
-                onclick="adminApprove(5001)">
-                Approve
-              </button>
-
-              <button
-                class="btn btn-danger"
-                onclick="adminReject(5001)">
-                Reject
-              </button>
-
-            </td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-
-  <div class="grid-3"
-       style="margin-top:20px;">
-
-    <div class="card">
-      <h3>AI Usage</h3>
-      <p class="muted">
-        Monitor AI credit consumption.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>PDF Usage</h3>
-      <p class="muted">
-        Monitor PDF processing activity.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Audit Logs</h3>
-      <p class="muted">
-        Review administrative actions.
-      </p>
     </div>
 
   </div>
@@ -2015,159 +2345,71 @@ th{
 </section>
 
 
-<!-- =========================================================
-     LEGAL
-========================================================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<section
-  id="legal"
-  class="page hidden">
+<footer>
 
-  <h1>Legal & Policies</h1>
+  <strong>
+    Vamp4
+  </strong>
 
-  <div class="grid-2">
+  <p>
+    AI • Digital Services • Education • Travel
+  </p>
 
-    <div class="card">
-      <h2>Terms of Service</h2>
-      <p class="muted">
-        Your final legally reviewed terms should
-        be displayed here.
-      </p>
-    </div>
+  <div class="footer-links">
 
-    <div class="card">
-      <h2>Privacy Policy</h2>
-      <p class="muted">
-        Explain how user information is collected,
-        processed and protected.
-      </p>
-    </div>
+    <a href="#" onclick="showPage('support')">
+      Contact
+    </a>
 
-    <div class="card">
-      <h2>Refund Policy</h2>
-      <p class="muted">
-        Clearly explain eligible refunds,
-        exclusions and processing times.
-      </p>
-    </div>
+    <a href="#">
+      Terms
+    </a>
 
-    <div class="card">
-      <h2>Affiliate Disclosure</h2>
-      <p class="muted">
-        Clearly disclose qualifying affiliate
-        relationships.
-      </p>
-    </div>
+    <a href="#">
+      Privacy
+    </a>
+
+    <a href="#">
+      Refund Policy
+    </a>
 
   </div>
 
-</section>
-
+</footer>
 
 </main>
 </div>
 
 
-<!-- =========================================================
-     NOTIFICATION PANEL
-========================================================= -->
-
-<div
-  id="notificationPanel"
-  class="notification-panel hidden">
-
-  <div class="notification-header">
-
-    <strong>
-      Notifications
-    </strong>
-
-    <button
-      class="icon-btn"
-      onclick="toggleNotifications()">
-      ×
-    </button>
-
-  </div>
-
-
-  <div class="notification">
-
-    <strong>
-      Welcome to Vamp4
-    </strong>
-
-    <p class="muted">
-      Your account dashboard is ready.
-    </p>
-
-  </div>
-
-
-  <div class="notification">
-
-    <strong>
-      Security
-    </strong>
-
-    <p class="muted">
-      Keep your account credentials secure.
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
+<!-- =====================================================
      MODAL
-========================================================= -->
+===================================================== -->
 
 <div
-  id="toolModal"
+  id="modal"
   class="modal hidden">
 
   <div class="modal-box">
 
-    <h2 id="modalTitle">
-      AI Tool
-    </h2>
+    <div class="modal-header">
 
-    <textarea
-      id="toolInput"
-      rows="8"
-      placeholder="Enter your content...">
-    </textarea>
-
-    <div
-      style="display:flex;gap:10px;margin-top:12px;">
+      <h2 id="modalTitle">
+        Vamp4
+      </h2>
 
       <button
-        class="btn btn-primary"
-        onclick="runTool()">
-
-        Run
-
-      </button>
-
-      <button
-        class="btn btn-secondary"
-        onclick="closeToolModal()">
-
-        Close
-
+        class="btn light"
+        onclick="closeModal()">
+        ✕
       </button>
 
     </div>
 
-
-    <textarea
-      id="toolOutput"
-      rows="8"
-      readonly
-      style="margin-top:15px;"
-      placeholder="Result will appear here...">
-    </textarea>
+    <div id="modalContent"></div>
 
   </div>
 
@@ -2176,610 +2418,1292 @@ th{
 
 <script>
 
-/* =========================================================
-   CONFIGURATION
-========================================================= */
+/* =====================================================
+   CONFIG
+===================================================== */
 
 /*
-  Change this to your real backend API URL.
+  Keep this empty when frontend and backend
+  are hosted on the same domain.
 
-  Example:
-  const API_URL = "https://api.vamp4.com";
+  Example later:
+
+  const API_URL = "https://api.yourdomain.com";
+
+  NEVER put private API keys, database passwords,
+  PayPal secrets or AI provider secrets here.
 */
 
 const API_URL = "";
 
 
-/* =========================================================
-   APPLICATION STATE
-========================================================= */
-
-let isRegisterMode = false;
-let currentTool = "";
-
-
-/* =========================================================
-   AUTHENTICATION
-========================================================= */
-
-function toggleAuthMode(){
-
-  isRegisterMode =
-    !isRegisterMode;
-
-  document
-    .getElementById("registerFields")
-    .classList
-    .toggle(
-      "hidden",
-      !isRegisterMode
-    );
-
-
-  document.getElementById(
-    "authTitle"
-  ).textContent =
-    isRegisterMode
-      ? "Create Account"
-      : "Welcome Back";
-
-
-  document.getElementById(
-    "authButton"
-  ).textContent =
-    isRegisterMode
-      ? "Register"
-      : "Login";
-
-
-  document.getElementById(
-    "authSwitchText"
-  ).textContent =
-    isRegisterMode
-      ? "Already have an account? Login"
-      : "Create an account";
-
-}
-
-
-async function handleAuth(){
-
-  const email =
-    document
-      .getElementById("authEmail")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("authPassword")
-      .value;
-
-
-  if(!email || !password){
-
-    showAuthMessage(
-      "Enter your email and password."
-    );
-
-    return;
-  }
-
-
-  /*
-    Connect this section to:
-
-    POST /api/auth/login
-    POST /api/auth/register
-
-    Never store passwords in localStorage.
-  */
-
-
-  showAuthMessage(
-    "Demo login successful."
-  );
-
-
-  setTimeout(
-    showApplication,
-    300
-  );
-
-}
-
-
-function showAuthMessage(message){
-
-  document
-    .getElementById("authMessage")
-    .textContent = message;
-
-}
-
-
-function showApplication(){
-
-  document
-    .getElementById("authPage")
-    .classList
-    .add("hidden");
-
-
-  document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
-
-}
-
-
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 
-function showPage(pageId){
+function showPage(id){
 
   document
     .querySelectorAll(".page")
-    .forEach(page => {
-
-      page.classList.add(
-        "hidden"
-      );
-
+    .forEach(page=>{
+      page.classList.add("hidden");
     });
 
+  const target =
+    document.getElementById(id);
 
-  const page =
-    document.getElementById(
-      pageId
-    );
-
-
-  if(page){
-
-    page.classList.remove(
-      "hidden"
-    );
-
+  if(target){
+    target.classList.remove("hidden");
   }
 
-
   document
-    .querySelectorAll(".nav-btn")
-    .forEach(btn => {
-
-      btn.classList.remove(
-        "active"
-      );
-
+    .querySelectorAll(".nav")
+    .forEach(button=>{
+      button.classList.remove("active");
     });
-
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
 
+  document
+    .getElementById("sidebar")
+    ?.classList.remove("open");
 }
 
 
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
-
-function toggleNotifications(){
+function toggleMenu(){
 
   document
-    .getElementById(
-      "notificationPanel"
-    )
-    .classList
-    .toggle("hidden");
+    .getElementById("sidebar")
+    .classList.toggle("open");
 
 }
 
 
-/* =========================================================
-   AI TOOLS
-========================================================= */
+/* =====================================================
+   MODAL
+===================================================== */
 
-function openAITool(name){
-
-  currentTool = name;
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent = name;
+function openModal(title,content){
 
   document
-    .getElementById("toolModal")
-    .classList
-    .remove("hidden");
-
-}
-
-
-function closeToolModal(){
+    .getElementById("modalTitle")
+    .textContent=title;
 
   document
-    .getElementById("toolModal")
-    .classList
-    .add("hidden");
+    .getElementById("modalContent")
+    .innerHTML=content;
+
+  document
+    .getElementById("modal")
+    .classList.remove("hidden");
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.add("hidden");
 
 }
 
 
-async function runTool(){
+/* =====================================================
+   AI
+===================================================== */
+
+function openAI(tool){
+
+  openModal(
+    tool,
+    `
+      <div class="form">
+
+        <div>
+
+          <label>
+            Your Request
+          </label>
+
+          <textarea
+            id="modalAIInput"
+            placeholder="Type your request..."></textarea>
+
+        </div>
+
+        <button
+          class="btn primary"
+          onclick="runModalAI('${escapeHTML(tool)}')">
+          Generate
+        </button>
+
+        <div
+          id="modalAIResult"
+          class="tool-result">
+        </div>
+
+      </div>
+    `
+  );
+
+}
+
+
+function runModalAI(tool){
 
   const input =
-    document
-      .getElementById("toolInput")
-      .value
-      .trim();
-
+    document.getElementById(
+      "modalAIInput"
+    ).value.trim();
 
   if(!input){
-
-    alert(
-      "Enter some content first."
-    );
-
+    alert("Enter a request.");
     return;
   }
 
-
   /*
-    Connect to your secure backend:
+    Production endpoint:
 
     POST /api/ai/generate
 
-    The AI provider API key must
-    NEVER be placed in this file.
+    The actual AI API key belongs on
+    the backend, not in this HTML.
   */
 
-
-  document.getElementById(
-    "toolOutput"
-  ).value =
-    `${currentTool} demo result.\n\n` +
-    "Connect this interface to your secure " +
-    "Vamp4 backend AI endpoint.";
-
+  document
+    .getElementById("modalAIResult")
+    .textContent =
+      `${tool} request is ready for the Vamp4 AI backend.`;
 }
 
 
-/* =========================================================
-   PDF TOOLS
-========================================================= */
+function sendAI(){
 
-function uploadPDF(){
+  const prompt =
+    document
+      .getElementById("aiPrompt")
+      .value
+      .trim();
 
-  const input =
-    document.getElementById(
-      "pdfUpload"
-    );
+  const response =
+    document
+      .getElementById("aiResponse");
 
+  if(!prompt){
 
-  const status =
-    document.getElementById(
-      "pdfStatus"
-    );
-
-
-  if(!input.files.length){
-
-    status.textContent =
-      "Select a PDF.";
+    response.textContent =
+      "Enter a question.";
 
     return;
   }
 
+  response.textContent =
+    "AI backend connection will process this request.";
+
+}
+
+
+/* =====================================================
+   TEXT TO PDF
+===================================================== */
+
+function createTextPDF(){
+
+  const text =
+    document
+      .getElementById("pdfText")
+      .value
+      .trim();
+
+  if(!text){
+
+    alert(
+      "Enter text first."
+    );
+
+    return;
+  }
+
+  const win =
+    window.open(
+      "",
+      "_blank"
+    );
+
+  if(!win){
+
+    alert(
+      "Allow pop-ups for Vamp4."
+    );
+
+    return;
+  }
+
+  win.document.write(`
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>
+        Vamp4 PDF
+      </title>
+
+      <style>
+
+        body{
+          font-family:Arial;
+          padding:50px;
+          line-height:1.7;
+          white-space:pre-wrap;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+      ${escapeHTML(text)}
+    </body>
+
+    </html>
+  `);
+
+  win.document.close();
+
+  setTimeout(
+    ()=>{
+      win.print();
+    },
+    500
+  );
+}
+
+
+/* =====================================================
+   IMAGES TO PDF
+===================================================== */
+
+async function imagesToPDF(){
+
+  const files =
+    [
+      ...
+      document
+        .getElementById("pdfImages")
+        .files
+    ];
+
+  if(!files.length){
+
+    alert(
+      "Select images first."
+    );
+
+    return;
+  }
+
+  const win =
+    window.open(
+      "",
+      "_blank"
+    );
+
+  if(!win){
+
+    alert(
+      "Allow pop-ups for Vamp4."
+    );
+
+    return;
+  }
+
+  let html=`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>
+        Vamp4 Image PDF
+      </title>
+
+      <style>
+
+        body{
+          margin:0;
+          text-align:center;
+        }
+
+        .page{
+          page-break-after:always;
+          padding:20px;
+        }
+
+        img{
+          max-width:100%;
+          max-height:95vh;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+  `;
+
+  files.forEach(file=>{
+
+    const url =
+      URL.createObjectURL(file);
+
+    html += `
+      <div class="page">
+        <img src="${url}">
+      </div>
+    `;
+
+  });
+
+  html += `
+    </body>
+    </html>
+  `;
+
+  win.document.write(html);
+  win.document.close();
+
+  setTimeout(
+    ()=>{
+      win.print();
+    },
+    700
+  );
+}
+
+
+/* =====================================================
+   PDF UPLOAD
+===================================================== */
+
+async function uploadPDF(){
+
+  const input =
+    document
+      .getElementById("pdfUpload");
 
   const file =
     input.files[0];
 
+  const status =
+    document
+      .getElementById("pdfStatus");
 
-  if(file.type !== "application/pdf"){
+  if(!file){
 
     status.textContent =
-      "Only PDF files are allowed.";
+      "Choose a PDF.";
 
     return;
   }
-
-
-  if(file.size > 10 * 1024 * 1024){
-
-    status.textContent =
-      "Maximum file size is 10 MB.";
-
-    return;
-  }
-
-
-  status.textContent =
-    "PDF selected. Connect this button to /api/pdf/upload.";
-
-}
-
-
-function mergePDFs(){
-
-  const files =
-    document
-      .getElementById(
-        "mergePDFs"
-      )
-      .files;
-
-
-  if(files.length < 2){
-
-    alert(
-      "Select at least two PDFs."
-    );
-
-    return;
-  }
-
-
-  alert(
-    "Connect to your secure PDF merge API."
-  );
-
-}
-
-
-function extractPages(){
-
-  const pages =
-    document
-      .getElementById(
-        "pageNumbers"
-      )
-      .value
-      .trim();
-
-
-  if(!pages){
-
-    alert(
-      "Enter page numbers."
-    );
-
-    return;
-  }
-
-
-  alert(
-    "Requested pages: " + pages
-  );
-
-}
-
-
-function pdfSummary(){
-
-  alert(
-    "Connect this button to your secure PDF AI summary API."
-  );
-
-}
-
-
-/* =========================================================
-   FILES
-========================================================= */
-
-function deleteDemoFile(button){
 
   if(
-    confirm(
-      "Delete this file?"
-    )
+    file.type !==
+    "application/pdf"
   ){
 
-    button
-      .closest(".file-item")
-      .remove();
+    status.textContent =
+      "Only PDF files are supported.";
 
+    return;
   }
 
+  status.textContent =
+    `Selected: ${file.name} (${formatBytes(file.size)})`;
+
+  /*
+    Production:
+
+    FormData -> /api/pdf/upload
+
+    Backend validates:
+    authentication
+    file type
+    file size
+    security
+    storage
+  */
 }
 
 
-/* =========================================================
-   CREDITS
-========================================================= */
-
-function buyCredits(amount){
-
-  /*
-    Connect to your backend payment
-    creation endpoint.
-
-    Do not process payment secrets
-    in the frontend.
-  */
+function pdfToolNotice(tool){
 
   alert(
-    `Purchase ${amount} AI credits through the secure payment API.`
+    `${tool} PDF processing will be connected to the Vamp4 backend.`
   );
 
 }
 
 
-/* =========================================================
-   WALLET
-========================================================= */
+/* =====================================================
+   IMAGE CONVERTER
+===================================================== */
 
-function requestWithdrawal(){
+function convertImage(){
 
-  const amount =
+  const file =
+    document
+      .getElementById("imageFile")
+      .files[0];
+
+  const format =
+    document
+      .getElementById("imageFormat")
+      .value;
+
+  if(!file){
+
+    alert(
+      "Select an image."
+    );
+
+    return;
+  }
+
+  const reader =
+    new FileReader();
+
+  reader.onload=function(event){
+
+    const img =
+      new Image();
+
+    img.onload=function(){
+
+      const canvas =
+        document.createElement(
+          "canvas"
+        );
+
+      canvas.width =
+        img.width;
+
+      canvas.height =
+        img.height;
+
+      const ctx =
+        canvas.getContext("2d");
+
+      ctx.drawImage(
+        img,
+        0,
+        0
+      );
+
+      const mime =
+        format === "jpeg"
+          ? "image/jpeg"
+          : `image/${format}`;
+
+      canvas.toBlob(
+        blob=>{
+
+          const url =
+            URL.createObjectURL(blob);
+
+          const link =
+            document.createElement("a");
+
+          link.href=url;
+
+          link.download =
+            `vamp4-converted.${
+              format === "jpeg"
+                ? "jpg"
+                : format
+            }`;
+
+          link.click();
+
+          URL.revokeObjectURL(url);
+
+        },
+        mime,
+        .9
+      );
+
+    };
+
+    img.src =
+      event.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
+/* =====================================================
+   IMAGE RESIZE
+===================================================== */
+
+function resizeAndCompressImage(){
+
+  const file =
+    document
+      .getElementById("advancedImage")
+      .files[0];
+
+  if(!file){
+
+    alert(
+      "Select an image."
+    );
+
+    return;
+  }
+
+  const width =
     Number(
       document
-        .getElementById(
-          "withdrawAmount"
-        )
+        .getElementById("resizeWidth")
         .value
     );
 
+  const height =
+    Number(
+      document
+        .getElementById("resizeHeight")
+        .value
+    );
 
-  const method =
+  const quality =
+    Number(
+      document
+        .getElementById("imageQuality")
+        .value
+    )/100;
+
+  if(
+    !width ||
+    !height
+  ){
+
+    alert(
+      "Enter width and height."
+    );
+
+    return;
+  }
+
+  const reader =
+    new FileReader();
+
+  reader.onload=function(event){
+
+    const img =
+      new Image();
+
+    img.onload=function(){
+
+      const canvas =
+        document.createElement(
+          "canvas"
+        );
+
+      canvas.width=width;
+      canvas.height=height;
+
+      const ctx =
+        canvas.getContext("2d");
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+      );
+
+      canvas.toBlob(
+        blob=>{
+
+          const url =
+            URL.createObjectURL(blob);
+
+          const link =
+            document.createElement("a");
+
+          link.href=url;
+
+          link.download=
+            "vamp4-image.jpg";
+
+          link.click();
+
+          URL.revokeObjectURL(url);
+
+        },
+        "image/jpeg",
+        quality
+      );
+
+    };
+
+    img.src =
+      event.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
+/* =====================================================
+   IMAGE INFORMATION
+===================================================== */
+
+function imageInfo(){
+
+  const file =
     document
-      .getElementById(
-        "withdrawMethod"
-      )
+      .getElementById("infoImage")
+      .files[0];
+
+  const result =
+    document
+      .getElementById("imageInfoResult");
+
+  if(!file){
+
+    result.textContent="";
+    return;
+  }
+
+  const img =
+    new Image();
+
+  const url =
+    URL.createObjectURL(file);
+
+  img.onload=function(){
+
+    result.innerHTML=`
+      <strong>File:</strong>
+      ${escapeHTML(file.name)}
+      <br>
+      <strong>Type:</strong>
+      ${escapeHTML(file.type)}
+      <br>
+      <strong>Size:</strong>
+      ${formatBytes(file.size)}
+      <br>
+      <strong>Dimensions:</strong>
+      ${img.width} × ${img.height}
+    `;
+
+    URL.revokeObjectURL(url);
+
+  };
+
+  img.src=url;
+}
+
+
+/* =====================================================
+   DIGITAL PRODUCTS
+===================================================== */
+
+function createProduct(event){
+
+  event.preventDefault();
+
+  const name =
+    document
+      .getElementById("productName")
+      .value.trim();
+
+  const category =
+    document
+      .getElementById("productCategory")
       .value;
 
+  const description =
+    document
+      .getElementById("productDescription")
+      .value.trim();
+
+  const price =
+    Number(
+      document
+        .getElementById("productPrice")
+        .value
+    );
+
+  const cover =
+    document
+      .getElementById("productCover")
+      .files[0];
+
+  const file =
+    document
+      .getElementById("productFile")
+      .files[0];
+
+  const message =
+    document
+      .getElementById("productMessage");
+
+  if(
+    !name ||
+    !description ||
+    !file
+  ){
+
+    message.textContent =
+      "Complete all required fields.";
+
+    return;
+  }
+
+  updateProductPreview(
+    name,
+    category,
+    description,
+    price,
+    cover
+  );
+
+  message.textContent =
+    "Product preview created. Backend upload will be connected next.";
+
+}
+
+
+function updateProductPreview(
+  name,
+  category,
+  description,
+  price,
+  cover
+){
+
+  const preview =
+    document
+      .getElementById(
+        "productPreview"
+      );
+
+  let coverHTML="";
+
+  if(cover){
+
+    const url =
+      URL.createObjectURL(
+        cover
+      );
+
+    coverHTML=`
+      <img
+        class="product-cover"
+        src="${url}"
+        alt="Product cover">
+    `;
+  }
+
+  preview.innerHTML=`
+
+    ${coverHTML}
+
+    <span class="badge badge-info">
+      ${escapeHTML(category)}
+    </span>
+
+    <h3 style="margin-top:10px">
+      ${escapeHTML(name)}
+    </h3>
+
+    <p>
+      ${escapeHTML(description)}
+    </p>
+
+    <div class="price">
+      ₹${Number(price).toFixed(2)}
+    </div>
+
+  `;
+}
+
+
+function purchaseProduct(productId){
+
+  /*
+    Production:
+
+    POST /api/products/purchase
+
+    The backend must retrieve the
+    actual product price from the database.
+
+    Never trust price values supplied
+    by the browser.
+  */
+
+  alert(
+    "Secure checkout will be connected to the backend."
+  );
+}
+
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+function lesson(level){
+
+  openModal(
+    `${level} Spoken English`,
+    `
+      <h3>Lesson ${level}</h3>
+
+      <p>
+        This lesson area will contain Vamp4
+        educational content, exercises and
+        progress tracking.
+      </p>
+
+      <br>
+
+      <button
+        class="btn primary"
+        onclick="closeModal()">
+        Start
+      </button>
+    `
+  );
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function checkQuiz(){
+
+  const selected =
+    document
+      .querySelector(
+        'input[name="q1"]:checked'
+      );
+
+  const result =
+    document
+      .getElementById(
+        "quizResult"
+      );
+
+  if(!selected){
+
+    result.textContent =
+      "Choose an answer.";
+
+    return;
+  }
+
+  if(
+    selected.value ===
+    "correct"
+  ){
+
+    result.innerHTML =
+      `
+      <span class="badge badge-success">
+        Correct!
+      </span>
+      New Delhi is the capital of India.
+      `;
+
+  }else{
+
+    result.innerHTML =
+      `
+      <span class="badge badge-danger">
+        Incorrect
+      </span>
+      Try again.
+      `;
+
+  }
+
+}
+
+
+/* =====================================================
+   MAP
+===================================================== */
+
+function findRoute(){
+
+  const from =
+    document
+      .getElementById("mapFrom")
+      .value.trim();
+
+  const to =
+    document
+      .getElementById("mapTo")
+      .value.trim();
+
+  const transport =
+    document
+      .getElementById("mapTransport")
+      .value;
+
+  const result =
+    document
+      .getElementById("routeResult");
+
+  if(!from || !to){
+
+    result.textContent =
+      "Enter both starting point and destination.";
+
+    return;
+  }
+
+  result.innerHTML=`
+    Route:
+    <strong>
+      ${escapeHTML(from)}
+      →
+      ${escapeHTML(to)}
+    </strong>
+    <br>
+    Transport:
+    ${escapeHTML(transport)}
+    <br><br>
+    <span class="badge badge-warning">
+      Live map API connection required
+    </span>
+  `;
+
+}
+
+
+/* =====================================================
+   BUS
+===================================================== */
+
+function searchBus(){
+
+  const from =
+    document
+      .getElementById("busFrom")
+      .value.trim();
+
+  const to =
+    document
+      .getElementById("busTo")
+      .value.trim();
+
+  const number =
+    document
+      .getElementById("busNumber")
+      .value.trim();
+
+  if(
+    !from &&
+    !to &&
+    !number
+  ){
+
+    alert(
+      "Enter a route or bus number."
+    );
+
+    return;
+  }
+
+  document
+    .getElementById("busResults")
+    .innerHTML=`
+
+      <h3>
+        Bus Search
+      </h3>
+
+      <p>
+        ${escapeHTML(from)}
+        →
+        ${escapeHTML(to)}
+      </p>
+
+      <p>
+        Bus:
+        ${escapeHTML(number)}
+      </p>
+
+      <br>
+
+      <span class="badge badge-warning">
+        Live transport API required
+      </span>
+
+  `;
+}
+
+
+/* =====================================================
+   TRAIN
+===================================================== */
+
+function searchTrain(){
+
+  const from =
+    document
+      .getElementById("trainFrom")
+      .value.trim();
+
+  const to =
+    document
+      .getElementById("trainTo")
+      .value.trim();
+
+  const number =
+    document
+      .getElementById("trainNumber")
+      .value.trim();
+
+  if(
+    !from &&
+    !to &&
+    !number
+  ){
+
+    alert(
+      "Enter train information."
+    );
+
+    return;
+  }
+
+  document
+    .getElementById("trainResults")
+    .innerHTML=`
+
+      <h3>
+        Train Search
+      </h3>
+
+      <p>
+        ${escapeHTML(from)}
+        →
+        ${escapeHTML(to)}
+      </p>
+
+      <p>
+        Train:
+        ${escapeHTML(number)}
+      </p>
+
+      <br>
+
+      <span class="badge badge-warning">
+        Live railway API required
+      </span>
+
+  `;
+}
+
+
+/* =====================================================
+   FLIGHT
+===================================================== */
+
+function searchFlight(){
+
+  const number =
+    document
+      .getElementById("flightNumber")
+      .value.trim();
+
+  if(!number){
+
+    alert(
+      "Enter a flight number."
+    );
+
+    return;
+  }
+
+  document
+    .getElementById("flightResults")
+    .innerHTML=`
+
+      <h3>
+        Flight ${escapeHTML(number)}
+      </h3>
+
+      <p>
+        Flight tracking request created.
+      </p>
+
+      <br>
+
+      <span class="badge badge-warning">
+        Live aviation API required
+      </span>
+
+  `;
+}
+
+
+/* =====================================================
+   PAYMENTS
+===================================================== */
+
+function startPayment(plan){
+
+  /*
+    Production:
+
+    Frontend:
+    POST /api/payments/create
+
+    Backend:
+    Creates secure PayPal order/subscription.
+
+    Frontend:
+    Receives safe checkout information.
+
+    Webhook:
+    Backend verifies payment.
+
+    NEVER place PayPal secret credentials
+    inside this HTML file.
+  */
+
+  alert(
+    `Secure checkout for ${plan} will be connected to the backend.`
+  );
+}
+
+
+/* =====================================================
+   FILES
+===================================================== */
+
+function uploadGeneralFiles(){
+
+  const files =
+    [
+      ...
+      document
+        .getElementById(
+          "generalFiles"
+        ).files
+    ];
 
   const status =
     document
       .getElementById(
-        "withdrawStatus"
+        "fileStatus"
       );
 
-
-  if(!Number.isFinite(amount) ||
-     amount < 500){
+  if(!files.length){
 
     status.textContent =
-      "Minimum withdrawal is ₹500.";
+      "Select files first.";
 
     return;
   }
 
-
-  status.textContent =
-    `Withdrawal request prepared for ₹${amount} via ${method}.`;
-
-  /*
-    Connect to:
-
-    POST /api/wallet/withdrawals
-
-    Server must verify:
-    - authentication
-    - balance
-    - withdrawal limits
-    - account eligibility
-    - fraud checks
-  */
+  status.innerHTML =
+    files.map(
+      file=>
+        `${escapeHTML(file.name)}
+         — ${formatBytes(file.size)}`
+    ).join("<br>");
 
 }
 
 
-/* =========================================================
-   REFERRALS
-========================================================= */
-
-async function copyReferral(){
-
-  const code =
-    document
-      .getElementById(
-        "referralCode"
-      )
-      .value;
-
-
-  const link =
-    window.location.origin +
-    "/register?ref=" +
-    encodeURIComponent(code);
-
-
-  try{
-
-    await navigator.clipboard
-      .writeText(link);
-
-    alert(
-      "Referral link copied."
-    );
-
-  }catch{
-
-    prompt(
-      "Copy your referral link:",
-      link
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   SUBSCRIPTIONS
-========================================================= */
-
-function subscribe(plan){
-
-  alert(
-    `Connect ${plan} subscription to your secure payment API.`
-  );
-
-}
-
-
-/* =========================================================
+/* =====================================================
    PROFILE
-========================================================= */
+===================================================== */
 
-function saveProfile(){
+async function saveProfile(event){
+
+  event.preventDefault();
 
   const name =
     document
       .getElementById(
         "profileName"
       )
-      .value
-      .trim();
+      .value.trim();
 
+  const email =
+    document
+      .getElementById(
+        "profileEmail"
+      )
+      .value.trim();
 
-  if(!name){
+  const message =
+    document
+      .getElementById(
+        "profileMessage"
+      );
 
-    alert(
-      "Enter your name."
-    );
+  if(!name || !email){
+
+    message.textContent =
+      "Enter your name and email.";
 
     return;
   }
 
+  /*
+    Production:
 
-  alert(
-    "Profile update prepared."
-  );
+    PUT /api/auth/profile
+  */
+
+  message.textContent =
+    "Profile is ready for backend saving.";
 
 }
 
 
-/* =========================================================
+/* =====================================================
    SUPPORT
-========================================================= */
+===================================================== */
 
-function submitSupport(){
+async function submitSupport(event){
+
+  event.preventDefault();
 
   const subject =
     document
       .getElementById(
         "supportSubject"
       )
-      .value
-      .trim();
-
+      .value.trim();
 
   const message =
     document
       .getElementById(
         "supportMessage"
       )
-      .value
-      .trim();
-
+      .value.trim();
 
   if(!subject || !message){
 
@@ -2790,100 +3714,159 @@ function submitSupport(){
     return;
   }
 
+  /*
+    Production:
+
+    POST /api/support/tickets
+  */
 
   alert(
-    "Support ticket prepared."
+    "Support request created."
   );
 
 }
 
 
-/* =========================================================
-   ADMIN
-========================================================= */
-
-function adminApprove(id){
-
-  if(
-    confirm(
-      `Approve withdrawal #${id}?`
-    )
-  ){
-
-    alert(
-      "Connect to secure admin withdrawal API."
-    );
-
-  }
-
-}
-
-
-function adminReject(id){
-
-  if(
-    confirm(
-      `Reject withdrawal #${id}?`
-    )
-  ){
-
-    alert(
-      "Connect to secure admin withdrawal API."
-    );
-
-  }
-
-}
-
-
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 
-function logout(){
+async function logout(){
 
-  /*
-    Production:
+  try{
 
-    POST /api/auth/logout
+    await fetch(
+      API_URL +
+      "/api/auth/logout",
+      {
+        method:"POST",
+        credentials:"include"
+      }
+    );
 
-    Then destroy the server session.
-  */
+  }catch(error){
 
+    console.log(error);
 
-  document
-    .getElementById("app")
-    .classList
-    .add("hidden");
+  }
 
-
-  document
-    .getElementById("authPage")
-    .classList
-    .remove("hidden");
+  showPage("home");
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function loadDashboard(){
+
+  try{
+
+    const response =
+      await fetch(
+        API_URL +
+        "/api/dashboard",
+        {
+          credentials:"include"
+        }
+      );
+
+    if(!response.ok){
+      return;
+    }
+
+    const data =
+      await response.json();
+
+    document
+      .getElementById("aiUsage")
+      .textContent =
+        data.aiUsage ?? 0;
+
+    document
+      .getElementById("productCount")
+      .textContent =
+        data.productCount ?? 0;
+
+    document
+      .getElementById("courseCount")
+      .textContent =
+        data.courseCount ?? 0;
+
+    document
+      .getElementById("userPlan")
+      .textContent =
+        data.plan || "Free";
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function formatBytes(bytes){
+
+  if(!bytes){
+    return "0 Bytes";
+  }
+
+  const units=[
+    "Bytes",
+    "KB",
+    "MB",
+    "GB"
+  ];
+
+  const index =
+    Math.floor(
+      Math.log(bytes) /
+      Math.log(1024)
+    );
+
+  return (
+    parseFloat(
+      (
+        bytes /
+        Math.pow(1024,index)
+      ).toFixed(2)
+    )
+    +
+    " " +
+    units[index]
+  );
+
+}
+
+
+/* =====================================================
    STARTUP
-========================================================= */
+===================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
-  () => {
-
-    /*
-      Production application should
-      call /api/auth/me here.
-
-      If authenticated:
-        showApplication()
-
-      Otherwise:
-        show login page.
-    */
-
+  ()=>{
+    showPage("home");
+    loadDashboard();
   }
 );
 
