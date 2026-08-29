@@ -6,6 +6,10 @@
 <meta name="description" content="Vamp4 - Learn, Create, Work and Earn">
 <title>Vamp4 — Learn • Create • Work • Earn</title>
 
+<!-- PayPal JS SDK — Client ID is public by design, safe to expose here.
+     The Secret key must NEVER go in this file or any frontend code. -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA2RSyXqKUCtmCZutQM2mBHb4FMiRmfMvi705eyrE1OU29F-OX8j-drQ5RxxCA5ToENjz2nfdY_mNYpi4&currency=INR&components=buttons"></script>
+
 <style>
 :root{
   --primary:#635bff;
@@ -1696,6 +1700,26 @@ footer li{
 </div>
 
 
+<!-- PAYPAL CHECKOUT -->
+
+<div class="modal" id="paypalModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 id="paypalModalTitle">Checkout</h2>
+      <button type="button" class="close" onclick="closeModal('paypalModal')" aria-label="Close">×</button>
+    </div>
+
+    <p id="paypalModalSummary" style="color:var(--muted);margin-bottom:16px"></p>
+
+    <div id="paypal-button-container"></div>
+
+  </div>
+
+</div>
+
+
 <!-- WITHDRAW -->
 
 <div class="modal" id="withdrawModal">
@@ -2313,9 +2337,55 @@ function submitJobPost(){
 
 function buyProduct(productName, price){
 
-  addTransaction(`Purchase: ${productName}`, "Purchase", -price, "Completed");
+  document.getElementById("paypalModalTitle").textContent = "Complete Purchase";
+  document.getElementById("paypalModalSummary").textContent =
+    `${productName} — ₹${price}`;
 
-  showToast(`Purchased "${productName}" for ₹${price}.`,"success");
+  const container = document.getElementById("paypal-button-container");
+  container.innerHTML = "";
+
+  openModal("paypalModal");
+
+  if(typeof paypal === "undefined"){
+    container.innerHTML =
+      "<p style='color:var(--danger)'>PayPal SDK failed to load. Check your internet connection or Client ID.</p>";
+    return;
+  }
+
+  paypal.Buttons({
+
+    style:{ layout:"vertical", color:"blue", shape:"rect", label:"paypal" },
+
+    // Client-side order creation. Fine for simple storefronts; for
+    // production you should create the order on your server instead,
+    // so the price can't be tampered with in the browser.
+    createOrder:(data, actions) => {
+      return actions.order.create({
+        purchase_units:[{
+          description:productName,
+          amount:{ currency_code:"INR", value:String(price) }
+        }]
+      });
+    },
+
+    onApprove:(data, actions) => {
+      return actions.order.capture().then(details => {
+        addTransaction(`Purchase: ${productName}`, "Purchase", -price, "Completed");
+        showToast(`Payment complete — thank you, ${details.payer.name.given_name}!`,"success");
+        closeModal("paypalModal");
+      });
+    },
+
+    onError:(err) => {
+      console.error("PayPal checkout error:", err);
+      showToast("Payment failed. Please try again.","error");
+    },
+
+    onCancel:() => {
+      showToast("Checkout cancelled.");
+    }
+
+  }).render("#paypal-button-container");
 
 }
 
@@ -2360,23 +2430,70 @@ function submitProduct(){
 
 const planPrices = { basic:299, pro:799, business:1999 };
 
+// PayPal Plan IDs from your PayPal dashboard (Products & Plans).
+// Subscriptions can't run on the Client ID alone — each plan (Basic,
+// Pro, Business) must exist in PayPal first and have an ID pasted here.
+// Until these are filled in, Subscribe falls back to a one-time
+// "first payment" charge via the same Checkout flow as the marketplace.
+const paypalPlanIds = {
+  basic:   "", // e.g. "P-5ML4271244454362WXNWU5NQ"
+  pro:     "",
+  business:""
+};
+
 function startCheckout(planId, buttonEl){
 
   const price = planPrices[planId] || 0;
+  const label = planId.charAt(0).toUpperCase() + planId.slice(1);
 
-  addTransaction(`${planId.charAt(0).toUpperCase()}${planId.slice(1)} plan subscription`, "Subscription", -price, "Completed");
-
-  document.querySelectorAll("[data-plan]").forEach(btn => {
-    btn.textContent = "Subscribe";
-    btn.disabled = false;
-  });
-
-  if(buttonEl){
-    buttonEl.textContent = "Active";
-    buttonEl.disabled = true;
+  if(!paypalPlanIds[planId]){
+    showToast(`No PayPal Plan ID set for "${label}" yet — charging the first month as a one-time payment.`);
+    buyProduct(`${label} plan (first month)`, price);
+    return;
   }
 
-  showToast(`Subscribed to the ${planId} plan.`,"success");
+  document.getElementById("paypalModalTitle").textContent = "Subscribe";
+  document.getElementById("paypalModalSummary").textContent =
+    `${label} plan — ₹${price}/month`;
+
+  const container = document.getElementById("paypal-button-container");
+  container.innerHTML = "";
+
+  openModal("paypalModal");
+
+  paypal.Buttons({
+
+    style:{ layout:"vertical", color:"blue", shape:"rect", label:"subscribe" },
+
+    createSubscription:(data, actions) => {
+      return actions.subscription.create({
+        plan_id: paypalPlanIds[planId]
+      });
+    },
+
+    onApprove:(data) => {
+      addTransaction(`${label} plan subscription`, "Subscription", -price, "Completed");
+
+      document.querySelectorAll("[data-plan]").forEach(btn => {
+        btn.textContent = "Subscribe";
+        btn.disabled = false;
+      });
+
+      if(buttonEl){
+        buttonEl.textContent = "Active";
+        buttonEl.disabled = true;
+      }
+
+      showToast(`Subscribed to the ${label} plan.`,"success");
+      closeModal("paypalModal");
+    },
+
+    onError:(err) => {
+      console.error("PayPal subscription error:", err);
+      showToast("Subscription failed. Please try again.","error");
+    }
+
+  }).render("#paypal-button-container");
 
 }
 
