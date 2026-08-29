@@ -1,0 +1,2767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vamp4 - Learn, Create, Work and Earn">
+<title>Vamp4 — Learn • Create • Work • Earn</title>
+
+<!-- PayPal JS SDK — Client ID is public by design, safe to expose here.
+     The Secret key must NEVER go in this file or any frontend code. -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA2RSyXqKUCtmCZutQM2mBHb4FMiRmfMvi705eyrE1OU29F-OX8j-drQ5RxxCA5ToENjz2nfdY_mNYpi4&currency=INR&components=buttons"></script>
+
+<style>
+:root{
+  --primary:#635bff;
+  --primary-dark:#4b44d1;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#687386;
+  --border:#e5e8ef;
+  --success:#16a34a;
+  --danger:#dc2626;
+  --warning:#d97706;
+  --shadow:0 10px 30px rgba(25,35,60,.08);
+  --radius:18px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  height:70px;
+  display:flex;
+  align-items:center;
+  padding:0 24px;
+  gap:20px;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:900;
+  color:var(--primary);
+  min-width:100px;
+  background:none;
+  border:0;
+}
+
+.search{
+  flex:1;
+  max-width:650px;
+  position:relative;
+}
+
+.search input{
+  width:100%;
+  padding:13px 18px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  outline:none;
+  background:#f8f9fc;
+}
+
+.search input:focus{
+  border-color:var(--primary);
+}
+
+.header-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 17px;
+  font-weight:700;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:white;
+}
+
+.btn-primary:hover{
+  background:var(--primary-dark);
+}
+
+.btn-primary:disabled{
+  background:#b3aeff;
+  cursor:not-allowed;
+}
+
+.btn-light{
+  background:#eef0f7;
+  color:var(--text);
+}
+
+.btn-danger{
+  background:var(--danger);
+  color:white;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--primary);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  border:0;
+  flex:none;
+}
+
+/* LAYOUT */
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 70px);
+}
+
+.sidebar{
+  width:245px;
+  background:#fff;
+  border-right:1px solid var(--border);
+  padding:22px 14px;
+  position:fixed;
+  top:70px;
+  bottom:0;
+  overflow:auto;
+  z-index:1500;
+}
+
+.sidebar-overlay{
+  display:none;
+  position:fixed;
+  inset:70px 0 0 0;
+  background:rgba(0,0,0,.4);
+  z-index:1400;
+}
+
+.sidebar-overlay.show{
+  display:block;
+}
+
+.nav-title{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:bold;
+  margin:18px 12px 8px;
+  text-transform:uppercase;
+}
+
+.nav-item{
+  width:100%;
+  border:0;
+  background:transparent;
+  text-align:left;
+  padding:12px;
+  border-radius:10px;
+  margin:2px 0;
+  color:#485267;
+  font-weight:600;
+}
+
+.nav-item:hover,
+.nav-item.active{
+  background:#eeedff;
+  color:var(--primary);
+}
+
+.main{
+  margin-left:245px;
+  width:calc(100% - 245px);
+  padding:28px;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(135deg,#635bff,#7c3aed);
+  color:#fff;
+  padding:38px;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.hero p{
+  opacity:.92;
+  max-width:700px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.hero .btn-light{
+  background:#fff;
+  color:#4b44d1;
+}
+
+/* SECTIONS */
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:28px 0 15px;
+}
+
+.section-title h2{
+  font-size:23px;
+}
+
+/* CARDS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 5px 18px rgba(25,35,60,.04);
+}
+
+.card:hover{
+  box-shadow:var(--shadow);
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eeedff;
+  font-size:24px;
+  margin-bottom:14px;
+}
+
+.card h3{
+  margin-bottom:6px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.card .btn{
+  margin-top:15px;
+}
+
+.empty-note{
+  color:var(--muted);
+  font-size:14px;
+  padding:14px 0;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:16px;
+}
+
+.stat-number{
+  font-size:28px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.stat-label{
+  color:var(--muted);
+}
+
+/* PROGRESS */
+
+.progress{
+  height:9px;
+  background:#e9ebf2;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.progress-bar{
+  height:100%;
+  background:var(--primary);
+  border-radius:20px;
+}
+
+/* TOOL */
+
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.tool{
+  padding:23px;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:16px;
+}
+
+.tool input[type="file"]{
+  display:block;
+  margin:10px 0;
+  font-size:13px;
+}
+
+.tool .file-name{
+  font-size:12px;
+  color:var(--muted);
+  min-height:16px;
+  margin-bottom:6px;
+}
+
+/* FORMS */
+
+.form{
+  max-width:650px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:25px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.form input,
+.form textarea,
+.form select{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  outline:none;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus{
+  border-color:var(--primary);
+}
+
+.form textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.field-error{
+  color:var(--danger);
+  font-size:13px;
+  margin-top:4px;
+  display:none;
+}
+
+.form-note{
+  margin-top:15px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow:auto;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px;
+}
+
+th,td{
+  padding:14px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+
+th{
+  background:#f8f9fc;
+}
+
+/* BADGES */
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.badge-success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge-warning{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.badge-danger{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+/* SEARCH RESULTS */
+
+.search-results{
+  position:absolute;
+  left:0;
+  right:0;
+  top:55px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  box-shadow:var(--shadow);
+  display:none;
+  z-index:2000;
+  max-height:420px;
+  overflow:auto;
+}
+
+.search-result{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:0;
+  border-bottom:1px solid var(--border);
+  padding:13px 16px;
+  font:inherit;
+  color:inherit;
+}
+
+.search-result:hover{
+  background:#f7f7fb;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:3000;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  background:#fff;
+  width:100%;
+  max-width:520px;
+  border-radius:20px;
+  padding:25px;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.close{
+  border:0;
+  background:#eee;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+}
+
+/* TOAST */
+
+.toast-wrap{
+  position:fixed;
+  top:85px;
+  right:20px;
+  z-index:4000;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.toast{
+  background:#111827;
+  color:#fff;
+  padding:13px 18px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  font-size:14px;
+  max-width:320px;
+  animation:slideIn .2s ease-out;
+}
+
+.toast.error{
+  background:var(--danger);
+}
+
+.toast.success{
+  background:var(--success);
+}
+
+@keyframes slideIn{
+  from{transform:translateX(20px);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:40px;
+  background:#111827;
+  color:#fff;
+  padding:40px 25px;
+  border-radius:20px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+footer p,
+footer li{
+  color:#b9c0cc;
+  font-size:14px;
+}
+
+footer ul{
+  list-style:none;
+}
+
+footer li{
+  margin:7px 0;
+}
+
+/* MOBILE */
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1100px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:800px){
+  .header{
+    padding:0 12px;
+  }
+
+  .mobile-menu{
+    display:block;
+  }
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+    width:100%;
+    padding:16px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  .header-actions .hide-mobile{
+    display:none;
+  }
+
+  .hero{
+    padding:25px;
+  }
+
+  .hero h1{
+    font-size:29px;
+  }
+
+  .grid,
+  .stats,
+  .tool-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <button type="button" class="btn btn-light mobile-menu" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
+
+  <button type="button" class="logo" onclick="showSection('home')">Vamp4</button>
+
+  <div class="search">
+    <input
+      id="globalSearch"
+      type="search"
+      placeholder="Search courses, exams, jobs, tools and products..."
+      oninput="searchSite(this.value)"
+      onfocus="if(this.value.trim())searchSite(this.value)"
+      autocomplete="off"
+    >
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <div class="header-actions">
+    <button type="button" class="btn btn-light hide-mobile" onclick="showSection('notifications')">🔔</button>
+    <button type="button" class="btn btn-light hide-mobile" onclick="showSection('wallet')">₹ Wallet</button>
+    <button type="button" class="btn btn-primary" id="loginLogoutBtn" onclick="handleAuthButton()">Login</button>
+    <button type="button" class="avatar" id="avatarBtn" onclick="showSection('profile')" title="Profile">V</button>
+  </div>
+
+</header>
+
+<div class="layout">
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+  <div class="nav-title">Main</div>
+
+  <button type="button" class="nav-item active" data-section="home" onclick="showSection('home', this)">🏠 Home</button>
+  <button type="button" class="nav-item" data-section="learning" onclick="showSection('learning', this)">🎓 Learning</button>
+  <button type="button" class="nav-item" data-section="exams" onclick="showSection('exams', this)">📝 Exams</button>
+  <button type="button" class="nav-item" data-section="ai" onclick="showSection('ai', this)">🤖 AI Centre</button>
+  <button type="button" class="nav-item" data-section="tools" onclick="showSection('tools', this)">🧰 Tools</button>
+
+  <div class="nav-title">Career</div>
+
+  <button type="button" class="nav-item" data-section="jobs" onclick="showSection('jobs', this)">💼 Jobs</button>
+  <button type="button" class="nav-item" data-section="career" onclick="showSection('career', this)">🚀 Career Centre</button>
+
+  <div class="nav-title">Marketplace</div>
+
+  <button type="button" class="nav-item" data-section="marketplace" onclick="showSection('marketplace', this)">🛍️ Marketplace</button>
+
+  <div class="nav-title">Money</div>
+
+  <button type="button" class="nav-item" data-section="wallet" onclick="showSection('wallet', this)">💰 Wallet</button>
+  <button type="button" class="nav-item" data-section="pricing" onclick="showSection('pricing', this)">💳 Plans</button>
+
+  <div class="nav-title">Account</div>
+
+  <button type="button" class="nav-item" data-section="profile" onclick="showSection('profile', this)">👤 Profile</button>
+  <button type="button" class="nav-item" data-section="notifications" onclick="showSection('notifications', this)">🔔 Notifications</button>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<!-- HOME -->
+
+<section id="home" class="section active">
+
+  <div class="hero">
+    <h1>Learn. Create. Work. Earn.</h1>
+    <p>
+      Vamp4 brings education, AI tools, PDF and image tools,
+      exams, careers, jobs and digital products together in one platform.
+    </p>
+
+    <div class="hero-buttons">
+      <button type="button" class="btn btn-light" onclick="showSection('learning')">Start Learning</button>
+      <button type="button" class="btn btn-light" onclick="showSection('ai')">Explore AI</button>
+      <button type="button" class="btn btn-light" onclick="showSection('jobs')">Find Jobs</button>
+      <button type="button" class="btn btn-light" onclick="showSection('marketplace')">Marketplace</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Learning Progress</div>
+      <div class="stat-number">72%</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Exam Attempts</div>
+      <div class="stat-number" id="examAttemptsStat">18</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Saved Jobs</div>
+      <div class="stat-number" id="savedJobsStat">12</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Wallet</div>
+      <div class="stat-number" id="homeWalletStat">₹0</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>Popular on Vamp4</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>Spoken English</h3>
+      <p>Improve grammar, vocabulary, conversation and interview communication.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('learning')">Learn</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Artificial Intelligence</h3>
+      <p>Learn AI, machine learning and practical technology skills.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('learning')">Explore</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Software Development</h3>
+      <p>Programming, web development, databases and software engineering.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('learning')">Explore</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Cyber Security</h3>
+      <p>Learn security fundamentals, networking and defensive security.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('learning')">Explore</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LEARNING -->
+
+<section id="learning" class="section">
+
+  <div class="section-title">
+    <h2>🎓 Learning Centre</h2>
+    <button type="button" class="btn btn-primary" onclick="openModal('courseModal')">Create Course</button>
+  </div>
+
+  <div class="grid" id="courseGrid">
+
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>Spoken English Mastery</h3>
+      <p>Beginner to advanced communication.</p>
+      <div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+      <p>75% complete</p>
+      <button type="button" class="btn btn-primary" onclick="continueCourse('Spoken English Mastery')">Continue</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Artificial Intelligence</h3>
+      <p>AI fundamentals and machine learning.</p>
+      <div class="progress"><div class="progress-bar" style="width:35%"></div></div>
+      <p>35% complete</p>
+      <button type="button" class="btn btn-primary" onclick="continueCourse('Artificial Intelligence')">Continue</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Data Science</h3>
+      <p>Python, statistics, SQL and visualisation.</p>
+      <button type="button" class="btn btn-primary" onclick="continueCourse('Data Science')">View Course</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Cyber Security</h3>
+      <p>Security fundamentals and defensive practices.</p>
+      <button type="button" class="btn btn-primary" onclick="continueCourse('Cyber Security')">View Course</button>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h2>Subjects</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card"><h3>📐 Mathematics</h3><p>School and competitive preparation.</p></div>
+    <div class="card"><h3>🔬 Science</h3><p>Physics, chemistry and biology.</p></div>
+    <div class="card"><h3>📚 Languages</h3><p>English and other language learning.</p></div>
+    <div class="card"><h3>💼 Business</h3><p>Accounting, finance and management.</p></div>
+
+  </div>
+
+</section>
+
+
+<!-- EXAMS -->
+
+<section id="exams" class="section">
+
+  <div class="section-title">
+    <h2>📝 Exam Centre</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🧮</div>
+      <h3>Aptitude Test</h3>
+      <p>50 questions • 60 minutes</p>
+      <button type="button" class="btn btn-primary" onclick="startExam('Aptitude Test')">Start</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>Reasoning</h3>
+      <p>Practice logical reasoning questions.</p>
+      <button type="button" class="btn btn-primary" onclick="startExam('Reasoning')">Start</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Programming</h3>
+      <p>Python, JavaScript and programming fundamentals.</p>
+      <button type="button" class="btn btn-primary" onclick="startExam('Programming')">Start</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Auditing & Finance</h3>
+      <p>Practice professional accounting and audit topics.</p>
+      <button type="button" class="btn btn-primary" onclick="startExam('Auditing & Finance')">Start</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- AI -->
+
+<section id="ai" class="section">
+
+  <div class="section-title">
+    <h2>🤖 Vamp4 AI Centre</h2>
+    <span class="badge badge-success">Premium Ready</span>
+  </div>
+
+  <div class="tool-grid">
+
+    <div class="tool">
+      <div class="icon">💬</div>
+      <h3>AI Chat</h3>
+      <p>Ask questions and learn with an AI assistant.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Open AI</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🎤</div>
+      <h3>English Coach</h3>
+      <p>Practise conversations and improve your English.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Start</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">💻</div>
+      <h3>Coding Assistant</h3>
+      <p>Understand programming concepts and code.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Open</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">📋</div>
+      <h3>CV Builder</h3>
+      <p>Create a professional CV.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('career')">Create CV</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🎤</div>
+      <h3>Interview Coach</h3>
+      <p>Practise job interview questions.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Practise</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🧠</div>
+      <h3>Study Planner</h3>
+      <p>Create a personalised learning plan.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Create Plan</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TOOLS -->
+
+<section id="tools" class="section">
+
+  <div class="section-title">
+    <h2>🧰 PDF & Image Tools</h2>
+  </div>
+
+  <div class="tool-grid">
+
+    <div class="tool">
+      <div class="icon">📄</div>
+      <h3>Merge PDF</h3>
+      <p>Combine multiple PDF files.</p>
+      <input type="file" multiple accept=".pdf" onchange="showFileName(this,'mergeFileName')">
+      <div class="file-name" id="mergeFileName"></div>
+      <button type="button" class="btn btn-primary" onclick="runTool('mergeFileName','PDFs merged')">Merge</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">✂️</div>
+      <h3>Split PDF</h3>
+      <p>Extract pages from a PDF.</p>
+      <input type="file" accept=".pdf" onchange="showFileName(this,'splitFileName')">
+      <div class="file-name" id="splitFileName"></div>
+      <button type="button" class="btn btn-primary" onclick="runTool('splitFileName','PDF split')">Split</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🗜️</div>
+      <h3>Compress PDF</h3>
+      <p>Reduce PDF file size.</p>
+      <input type="file" accept=".pdf" onchange="showFileName(this,'compressFileName')">
+      <div class="file-name" id="compressFileName"></div>
+      <button type="button" class="btn btn-primary" onclick="runTool('compressFileName','PDF compressed')">Compress</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🔤</div>
+      <h3>OCR</h3>
+      <p>Extract text from scanned documents.</p>
+      <input type="file" accept=".pdf,image/*" onchange="showFileName(this,'ocrFileName')">
+      <div class="file-name" id="ocrFileName"></div>
+      <button type="button" class="btn btn-primary" onclick="runTool('ocrFileName','Text extracted')">Process</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🖼️</div>
+      <h3>Image Converter</h3>
+      <p>Convert and resize images.</p>
+      <input type="file" accept="image/*" onchange="showFileName(this,'imgFileName')">
+      <div class="file-name" id="imgFileName"></div>
+      <button type="button" class="btn btn-primary" onclick="runTool('imgFileName','Image converted')">Convert</button>
+    </div>
+
+    <div class="tool">
+      <div class="icon">🎨</div>
+      <h3>AI Image Generator</h3>
+      <p>Create images from text prompts.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiImageModal')">Generate</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- JOBS -->
+
+<section id="jobs" class="section">
+
+  <div class="section-title">
+    <h2>💼 Global Jobs</h2>
+    <button type="button" class="btn btn-primary" onclick="openModal('jobModal')">Post Job</button>
+  </div>
+
+  <div class="form" style="margin-bottom:20px">
+
+    <div class="form-group">
+      <label for="jobSearch">Search</label>
+      <input id="jobSearch" placeholder="Software Developer, Data Scientist..." oninput="filterJobs()">
+    </div>
+
+    <div class="form-group">
+      <label for="jobLocationSearch">Location</label>
+      <input id="jobLocationSearch" placeholder="Country or city" oninput="filterJobs()">
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="filterJobs()">Search Jobs</button>
+
+  </div>
+
+  <div class="grid" id="jobGrid">
+
+    <div class="card job-card" data-title="Software Developer" data-location="Remote">
+      <h3>Software Developer</h3>
+      <p>Technology Company</p>
+      <p>🌍 Remote • Full-time</p>
+      <span class="badge badge-success">New</span>
+      <br>
+      <button type="button" class="btn btn-primary" onclick="viewJob('Software Developer','Technology Company','Remote • Full-time')">View & Apply</button>
+    </div>
+
+    <div class="card job-card" data-title="Data Analyst" data-location="Chennai">
+      <h3>Data Analyst</h3>
+      <p>Global Business</p>
+      <p>📍 Chennai • Full-time</p>
+      <button type="button" class="btn btn-primary" onclick="viewJob('Data Analyst','Global Business','Chennai • Full-time')">View & Apply</button>
+    </div>
+
+    <div class="card job-card" data-title="UI/UX Designer" data-location="Remote">
+      <h3>UI/UX Designer</h3>
+      <p>Digital Studio</p>
+      <p>🌍 Remote • Contract</p>
+      <button type="button" class="btn btn-primary" onclick="viewJob('UI/UX Designer','Digital Studio','Remote • Contract')">View & Apply</button>
+    </div>
+
+    <div class="card job-card" data-title="Cyber Security Analyst" data-location="India">
+      <h3>Cyber Security Analyst</h3>
+      <p>Technology Organisation</p>
+      <p>📍 India • Full-time</p>
+      <button type="button" class="btn btn-primary" onclick="viewJob('Cyber Security Analyst','Technology Organisation','India • Full-time')">View & Apply</button>
+    </div>
+
+  </div>
+
+  <p class="empty-note" id="jobEmptyNote" style="display:none">No jobs match your search.</p>
+
+</section>
+
+
+<!-- CAREER -->
+
+<section id="career" class="section">
+
+  <div class="section-title">
+    <h2>🚀 Career Centre</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">📄</div>
+      <h3>My CV</h3>
+      <p>Create and manage your professional CV.</p>
+      <button type="button" class="btn btn-primary" onclick="showToast('Opening CV builder...')">Open CV</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>Interview Coach</h3>
+      <p>Practise technical and HR interviews.</p>
+      <button type="button" class="btn btn-primary" onclick="openModal('aiModal')">Start</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Skill Gap</h3>
+      <p>Find skills needed for your target career.</p>
+      <button type="button" class="btn btn-primary" onclick="showToast('Analysing your skill gap...')">Analyse</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💼</div>
+      <h3>Applications</h3>
+      <p>Track your job applications.</p>
+      <button type="button" class="btn btn-primary" onclick="showSection('jobs')">View</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MARKETPLACE -->
+
+<section id="marketplace" class="section">
+
+  <div class="section-title">
+    <h2>🛍️ Marketplace</h2>
+    <button type="button" class="btn btn-primary" onclick="openModal('productModal')">Sell Product</button>
+  </div>
+
+  <div class="grid" id="marketplaceGrid">
+
+    <div class="card">
+      <div class="icon">📘</div>
+      <h3>AI Interview Guide</h3>
+      <p>Digital PDF guide.</p>
+      <strong>₹299</strong><br>
+      <button type="button" class="btn btn-primary" onclick="buyProduct(1,'AI Interview Guide',299)">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Data Science Course</h3>
+      <p>Professional learning course.</p>
+      <strong>₹1,999</strong><br>
+      <button type="button" class="btn btn-primary" onclick="buyProduct(2,'Data Science Course',1999)">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📋</div>
+      <h3>CV Templates</h3>
+      <p>Professional CV templates.</p>
+      <strong>₹199</strong><br>
+      <button type="button" class="btn btn-primary" onclick="buyProduct(3,'CV Templates',199)">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>Developer Resources</h3>
+      <p>Digital development resources.</p>
+      <strong>₹499</strong><br>
+      <button type="button" class="btn btn-primary" onclick="buyProduct(4,'Developer Resources',499)">Buy Now</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section id="wallet" class="section">
+
+  <div class="section-title">
+    <h2>💰 My Wallet</h2>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-label">Available</div>
+      <div class="stat-number" id="walletAvailable">₹0.00</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Pending</div>
+      <div class="stat-number" id="walletPending">₹0.00</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">This Month</div>
+      <div class="stat-number" id="walletMonth">₹0.00</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Lifetime</div>
+      <div class="stat-number" id="walletLifetime">₹0.00</div>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h2>Transactions</h2>
+    <button type="button" class="btn btn-primary" onclick="openModal('withdrawModal')">Withdraw</button>
+  </div>
+
+  <div class="table-wrap">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody id="transactionsBody">
+        <tr id="noTransactionsRow">
+          <td>—</td>
+          <td>No transactions yet</td>
+          <td>—</td>
+          <td>₹0</td>
+          <td><span class="badge badge-warning">Waiting</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section id="pricing" class="section">
+
+  <div class="section-title">
+    <h2>💳 Vamp4 Plans</h2>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Free</h3>
+      <h2>₹0</h2>
+      <p>Basic learning and limited tools.</p>
+      <button type="button" class="btn btn-light" id="freePlanBtn" disabled>Current</button>
+    </div>
+
+    <div class="card">
+      <h3>Basic</h3>
+      <h2>₹299/month</h2>
+      <p>More learning and tool usage.</p>
+      <button type="button" class="btn btn-primary" data-plan="basic" onclick="startCheckout('basic',this)">Subscribe</button>
+    </div>
+
+    <div class="card">
+      <h3>Pro</h3>
+      <h2>₹799/month</h2>
+      <p>Premium AI, courses, exams and tools.</p>
+      <button type="button" class="btn btn-primary" data-plan="pro" onclick="startCheckout('pro',this)">Subscribe</button>
+    </div>
+
+    <div class="card">
+      <h3>Business</h3>
+      <h2>₹1,999/month</h2>
+      <p>Employer and business features.</p>
+      <button type="button" class="btn btn-primary" data-plan="business" onclick="startCheckout('business',this)">Subscribe</button>
+    </div>
+
+  </div>
+
+  <p style="color:var(--muted);margin-top:20px">
+    Final pricing, taxes and availability should be configured by the Vamp4 backend.
+  </p>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="section">
+
+  <div class="section-title">
+    <h2>👤 My Profile</h2>
+  </div>
+
+  <div class="form">
+
+    <div class="form-group">
+      <label for="profileName">Name</label>
+      <input id="profileName" placeholder="Your name">
+    </div>
+
+    <div class="form-group">
+      <label for="profileEmail">Email</label>
+      <input id="profileEmail" type="email" placeholder="Your email">
+    </div>
+
+    <div class="form-group">
+      <label for="profileCountry">Country</label>
+      <select id="profileCountry">
+        <option>India</option>
+        <option>United States</option>
+        <option>United Kingdom</option>
+        <option>Canada</option>
+        <option>Australia</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+
+  </div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section id="notifications" class="section">
+
+  <div class="section-title">
+    <h2>🔔 Notifications</h2>
+  </div>
+
+  <div class="card" id="notificationsList">
+    <h3>Welcome to Vamp4</h3>
+    <p>Your notification centre will display account, course, payment, job and security notifications.</p>
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+      <h2>Vamp4</h2>
+      <p style="margin-top:10px">
+        Learn • Create • Work • Earn
+      </p>
+    </div>
+
+    <div>
+      <h3>Platform</h3>
+      <ul>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('learning')">Learning</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('ai')">AI Tools</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('exams')">Exams</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('jobs')">Jobs</button></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Tools</h3>
+      <ul>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('tools')">PDF Studio</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('tools')">Image Studio</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('career')">CV Builder</button></li>
+        <li><button type="button" class="nav-item" style="padding:0;background:none;color:inherit;font-weight:normal" onclick="showSection('career')">Interview Coach</button></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Legal</h3>
+      <ul>
+        <li>Terms</li>
+        <li>Privacy</li>
+        <li>Refund Policy</li>
+        <li>Cookie Policy</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p style="margin-top:30px">
+    © 2026 Vamp4. All rights reserved.
+  </p>
+
+</footer>
+
+</main>
+</div>
+
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Login to Vamp4</h2>
+      <button type="button" class="close" onclick="closeModal('loginModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email">
+        <div class="field-error" id="loginEmailError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" autocomplete="current-password">
+        <div class="field-error" id="loginPasswordError"></div>
+      </div>
+
+      <button type="button" class="btn btn-primary" style="width:100%" onclick="loginUser()">
+        Login
+      </button>
+
+      <div class="form-note">
+        New user?
+        <button type="button" class="btn btn-light" onclick="openModal('registerModal');closeModal('loginModal')">
+          Create account
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- REGISTER MODAL -->
+
+<div class="modal" id="registerModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Create Vamp4 Account</h2>
+      <button type="button" class="close" onclick="closeModal('registerModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="registerName">Name</label>
+        <input id="registerName" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label for="registerEmail">Email</label>
+        <input id="registerEmail" type="email" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label for="registerPassword">Password</label>
+        <input id="registerPassword" type="password" autocomplete="new-password">
+        <div class="field-error" id="registerPasswordError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="registerRole">Account type</label>
+        <select id="registerRole">
+          <option value="jobseeker">Job seeker</option>
+          <option value="employer">Employer</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary" style="width:100%" onclick="registerUser()">
+        Create Account
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- AI MODAL -->
+
+<div class="modal" id="aiModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>🤖 Vamp4 AI</h2>
+      <button type="button" class="close" onclick="closeModal('aiModal')" aria-label="Close">×</button>
+    </div>
+
+    <div id="aiMessages" class="card" style="min-height:150px;margin-bottom:15px">
+      <p><strong>Vamp4 AI:</strong> How can I help you learn today?</p>
+    </div>
+
+    <textarea id="aiInput" placeholder="Ask something..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendAI();}"></textarea>
+
+    <button type="button" class="btn btn-primary" style="margin-top:10px" onclick="sendAI()">
+      Send
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- AI IMAGE -->
+
+<div class="modal" id="aiImageModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>🎨 AI Image Generator</h2>
+      <button type="button" class="close" onclick="closeModal('aiImageModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="imagePrompt">Prompt</label>
+        <textarea id="imagePrompt" placeholder="Describe the image you want..."></textarea>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="generateImage()">
+        Generate Image
+      </button>
+
+      <div id="imageResult" style="margin-top:20px"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- COURSE -->
+
+<div class="modal" id="courseModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Create Course</h2>
+      <button type="button" class="close" onclick="closeModal('courseModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="courseTitle">Course Title</label>
+        <input id="courseTitle" placeholder="Course name">
+      </div>
+
+      <div class="form-group">
+        <label for="courseDescription">Description</label>
+        <textarea id="courseDescription"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="saveCourseDraft()">
+        Save Draft
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- JOB -->
+
+<div class="modal" id="jobModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Post a Job</h2>
+      <button type="button" class="close" onclick="closeModal('jobModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="jobTitleInput">Job Title</label>
+        <input id="jobTitleInput" placeholder="Software Developer">
+      </div>
+
+      <div class="form-group">
+        <label for="jobLocationInput">Location</label>
+        <input id="jobLocationInput" placeholder="Remote / City / Country">
+      </div>
+
+      <div class="form-group">
+        <label for="jobDescriptionInput">Description</label>
+        <textarea id="jobDescriptionInput"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="submitJobPost()">
+        Submit for Review
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PRODUCT -->
+
+<div class="modal" id="productModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Sell Digital Product</h2>
+      <button type="button" class="close" onclick="closeModal('productModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="productNameInput">Product Name</label>
+        <input id="productNameInput">
+      </div>
+
+      <div class="form-group">
+        <label for="productPriceInput">Price (₹)</label>
+        <input id="productPriceInput" type="number" min="1">
+      </div>
+
+      <div class="form-group">
+        <label for="productFileInput">Digital File</label>
+        <input id="productFileInput" type="file">
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="submitProduct()">
+        Submit Product
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PAYPAL CHECKOUT -->
+
+<div class="modal" id="paypalModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2 id="paypalModalTitle">Checkout</h2>
+      <button type="button" class="close" onclick="closeModal('paypalModal')" aria-label="Close">×</button>
+    </div>
+
+    <p id="paypalModalSummary" style="color:var(--muted);margin-bottom:16px"></p>
+
+    <div id="paypal-button-container"></div>
+
+  </div>
+
+</div>
+
+
+<!-- WITHDRAW -->
+
+<div class="modal" id="withdrawModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <h2>Withdraw Earnings</h2>
+      <button type="button" class="close" onclick="closeModal('withdrawModal')" aria-label="Close">×</button>
+    </div>
+
+    <div class="form">
+
+      <div class="form-group">
+        <label for="withdrawAmount">Amount (₹)</label>
+        <input id="withdrawAmount" type="number" min="0" step="1">
+        <div class="field-error" id="withdrawError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="withdrawMethod">Payout Method</label>
+        <select id="withdrawMethod">
+          <option>PayPal</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="requestWithdrawal()">
+        Request Withdrawal
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/*
+=========================================================
+VAMP4 FRONTEND — CONNECTED TO REAL BACKEND
+=========================================================
+
+Auth (login/register) and Marketplace checkout now call the
+real Express backend at API_BASE:
+  - POST /api/auth/register, POST /api/auth/login
+  - POST /api/orders, POST /api/orders/:id/capture
+
+Everything else (jobs list, courses, exams, tools, wallet
+ledger display) is still local UI state — wire those up the
+same way (fetch + your JWT) as you build out those backend
+routes.
+*/
+
+// Point this at your deployed backend, e.g. "https://api.vamp4.com/api"
+const API_BASE = "http://localhost:4000/api";
+
+let currentUser = null; // { id, name, email, role, token }
+
+const state = {
+  wallet:{ available:0, pending:0, month:0, lifetime:0 },
+  transactions:[],
+  savedJobs: 12,
+  examAttempts: 18,
+  jobs:[
+    {title:"Software Developer",company:"Technology Company",meta:"Remote • Full-time",location:"Remote"},
+    {title:"Data Analyst",company:"Global Business",meta:"Chennai • Full-time",location:"Chennai"},
+    {title:"UI/UX Designer",company:"Digital Studio",meta:"Remote • Contract",location:"Remote"},
+    {title:"Cyber Security Analyst",company:"Technology Organisation",meta:"India • Full-time",location:"India"}
+  ]
+};
+
+
+/* ------------------------------------------------------
+   TOASTS (replaces blocking alert() popups)
+------------------------------------------------------ */
+
+function showToast(message, type){
+
+  const wrap = document.getElementById("toastWrap");
+  const toast = document.createElement("div");
+
+  toast.className = "toast" + (type ? " " + type : "");
+  toast.textContent = message;
+
+  wrap.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3200);
+
+}
+
+
+/* ------------------------------------------------------
+   NAVIGATION
+------------------------------------------------------ */
+
+function showSection(id, sourceEl){
+
+  document.querySelectorAll(".section")
+    .forEach(section => section.classList.remove("active"));
+
+  const target = document.getElementById(id);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-item[data-section]")
+    .forEach(item => item.classList.remove("active"));
+
+  const navBtn = sourceEl && sourceEl.dataset && sourceEl.dataset.section
+    ? sourceEl
+    : document.querySelector(`.nav-item[data-section="${id}"]`);
+
+  navBtn?.classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  closeSidebar();
+  document.getElementById("searchResults").style.display = "none";
+}
+
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("sidebarOverlay").classList.toggle("show");
+}
+
+function closeSidebar(){
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("sidebarOverlay").classList.remove("show");
+}
+
+
+/* ------------------------------------------------------
+   MODALS
+------------------------------------------------------ */
+
+function openModal(id){
+  document.getElementById(id)?.classList.add("show");
+}
+
+function closeModal(id){
+  document.getElementById(id)?.classList.remove("show");
+}
+
+document.querySelectorAll(".modal").forEach(modal => {
+
+  modal.addEventListener("click", event => {
+
+    if(event.target === modal){
+      modal.classList.remove("show");
+    }
+
+  });
+
+});
+
+document.addEventListener("keydown", event => {
+
+  if(event.key === "Escape"){
+    document.querySelectorAll(".modal.show")
+      .forEach(modal => modal.classList.remove("show"));
+    document.getElementById("searchResults").style.display = "none";
+  }
+
+});
+
+
+/* ------------------------------------------------------
+   SEARCH
+------------------------------------------------------ */
+
+const searchData = [
+
+  {name:"Spoken English Mastery",type:"Course",section:"learning"},
+  {name:"Artificial Intelligence",type:"Course",section:"learning"},
+  {name:"Data Science",type:"Course",section:"learning"},
+  {name:"Cyber Security",type:"Course",section:"learning"},
+  {name:"Python Programming",type:"Course",section:"learning"},
+
+  {name:"Aptitude Test",type:"Exam",section:"exams"},
+  {name:"Programming Test",type:"Exam",section:"exams"},
+  {name:"Auditing & Finance",type:"Exam",section:"exams"},
+
+  {name:"AI Chat",type:"AI Tool",section:"ai"},
+  {name:"CV Builder",type:"AI Tool",section:"career"},
+  {name:"Interview Coach",type:"AI Tool",section:"career"},
+
+  {name:"Merge PDF",type:"PDF Tool",section:"tools"},
+  {name:"OCR",type:"PDF Tool",section:"tools"},
+  {name:"Image Converter",type:"Image Tool",section:"tools"},
+
+  {name:"Software Developer",type:"Job",section:"jobs"},
+  {name:"Data Analyst",type:"Job",section:"jobs"},
+  {name:"Cyber Security Analyst",type:"Job",section:"jobs"}
+
+];
+
+
+function searchSite(value){
+
+  const results = document.getElementById("searchResults");
+
+  if(!value.trim()){
+    results.style.display="none";
+    return;
+  }
+
+  const query = value.toLowerCase();
+
+  const matches = searchData.filter(item =>
+    item.name.toLowerCase().includes(query)
+  );
+
+  if(!matches.length){
+
+    results.innerHTML =
+      `<div class="search-result">No results found.</div>`;
+
+  }else{
+
+    results.innerHTML = matches.map(item => `
+      <button
+        type="button"
+        class="search-result"
+        onclick="showSection('${item.section}');document.getElementById('globalSearch').value=''"
+      >
+        <strong>${escapeHtml(item.name)}</strong>
+        <br>
+        <small>${escapeHtml(item.type)}</small>
+      </button>
+    `).join("");
+
+  }
+
+  results.style.display="block";
+}
+
+document.addEventListener("click", event => {
+
+  const search = document.querySelector(".search");
+  const results = document.getElementById("searchResults");
+
+  if(search && !search.contains(event.target)){
+    results.style.display = "none";
+  }
+
+});
+
+
+/* ------------------------------------------------------
+   AUTHENTICATION — real backend calls
+------------------------------------------------------ */
+
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function setFieldError(id, message){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.textContent = message || "";
+  el.style.display = message ? "block" : "none";
+}
+
+async function registerUser(){
+
+  const name = document.getElementById("registerName").value.trim();
+  const email = document.getElementById("registerEmail").value.trim();
+  const password = document.getElementById("registerPassword").value;
+  const role = document.getElementById("registerRole").value;
+
+  setFieldError("registerPasswordError","");
+
+  if(!name || !email){
+    showToast("Please complete all fields.","error");
+    return;
+  }
+
+  if(!isValidEmail(email)){
+    showToast("Enter a valid email address.","error");
+    return;
+  }
+
+  if(password.length < 6){
+    setFieldError("registerPasswordError","Password must be at least 6 characters.");
+    return;
+  }
+
+  try {
+
+    const res = await fetch(`${API_BASE}/auth/register`, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ name, email, password, role })
+    });
+
+    const data = await res.json();
+
+    if(!res.ok){
+      showToast(data.error || "Could not create account.","error");
+      return;
+    }
+
+    currentUser = { ...data.user, token: data.token };
+    localStorage.setItem("vamp4_token", data.token);
+
+    showToast(`Account created. Welcome, ${currentUser.name}!`,"success");
+    closeModal("registerModal");
+    refreshAccountUI();
+
+    document.getElementById("registerName").value = "";
+    document.getElementById("registerEmail").value = "";
+    document.getElementById("registerPassword").value = "";
+
+  } catch (err) {
+    console.error("Register error:", err);
+    showToast("Network error — is the backend running?","error");
+  }
+
+}
+
+
+async function loginUser(){
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  setFieldError("loginEmailError","");
+  setFieldError("loginPasswordError","");
+
+  let hasError = false;
+
+  if(!email || !isValidEmail(email)){
+    setFieldError("loginEmailError","Enter a valid email address.");
+    hasError = true;
+  }
+
+  if(!password){
+    setFieldError("loginPasswordError","Enter your password.");
+    hasError = true;
+  }
+
+  if(hasError) return;
+
+  try {
+
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if(!res.ok){
+      setFieldError("loginPasswordError", data.error || "Invalid email or password.");
+      return;
+    }
+
+    currentUser = { ...data.user, token: data.token };
+    localStorage.setItem("vamp4_token", data.token);
+
+    showToast("Login successful.","success");
+    closeModal("loginModal");
+    refreshAccountUI();
+
+    document.getElementById("loginEmail").value = "";
+    document.getElementById("loginPassword").value = "";
+
+  } catch (err) {
+    console.error("Login error:", err);
+    showToast("Network error — is the backend running?","error");
+  }
+
+}
+
+
+function logoutUser(){
+  currentUser = null;
+  localStorage.removeItem("vamp4_token");
+  showToast("You have been logged out.");
+  refreshAccountUI();
+}
+
+
+function handleAuthButton(){
+  if(currentUser){
+    logoutUser();
+  }else{
+    openModal("loginModal");
+  }
+}
+
+
+function refreshAccountUI(){
+
+  const avatar = document.getElementById("avatarBtn");
+  const authBtn = document.getElementById("loginLogoutBtn");
+
+  if(currentUser){
+    avatar.textContent = currentUser.name.charAt(0).toUpperCase();
+    authBtn.textContent = "Logout";
+    document.getElementById("profileName").value = currentUser.name;
+    document.getElementById("profileEmail").value = currentUser.email;
+  }else{
+    avatar.textContent = "V";
+    authBtn.textContent = "Login";
+  }
+
+}
+
+
+/* ------------------------------------------------------
+   AI CHAT (canned local responses so it always works)
+------------------------------------------------------ */
+
+const aiReplies = [
+  "That's a great question — here's a quick way to think about it: break the problem into smaller steps and tackle one at a time.",
+  "I'd recommend starting with the fundamentals in the Learning Centre, then testing yourself in the Exam Centre.",
+  "Here's a tip: practise out loud — it helps for both language learning and interview prep.",
+  "Good progress! Keep going, and check the Career Centre for related resources.",
+  "Try searching the Learning Centre for a course on this — there are a few that cover it well."
+];
+
+function sendAI(){
+
+  const input = document.getElementById("aiInput");
+  const message = input.value.trim();
+
+  if(!message){
+    return;
+  }
+
+  const box = document.getElementById("aiMessages");
+
+  box.innerHTML += `
+    <p style="margin-top:12px">
+      <strong>You:</strong>
+      ${escapeHtml(message)}
+    </p>
+  `;
+
+  input.value = "";
+
+  const reply = aiReplies[Math.floor(Math.random() * aiReplies.length)];
+
+  setTimeout(() => {
+
+    box.innerHTML += `
+      <p style="margin-top:12px">
+        <strong>Vamp4 AI:</strong>
+        ${escapeHtml(reply)}
+      </p>
+    `;
+
+    box.scrollTop = box.scrollHeight;
+
+  }, 300);
+
+  box.scrollTop = box.scrollHeight;
+
+}
+
+
+/* ------------------------------------------------------
+   AI IMAGE (local placeholder preview, no external calls)
+------------------------------------------------------ */
+
+function generateImage(){
+
+  const prompt = document.getElementById("imagePrompt").value.trim();
+
+  if(!prompt){
+    showToast("Enter an image description.","error");
+    return;
+  }
+
+  const resultBox = document.getElementById("imageResult");
+
+  resultBox.innerHTML = "<p>Generating...</p>";
+
+  setTimeout(() => {
+
+    const hue = Math.floor(Math.random() * 360);
+
+    resultBox.innerHTML = `
+      <div style="width:100%;aspect-ratio:1;border-radius:12px;
+        background:linear-gradient(135deg,hsl(${hue},80%,65%),hsl(${(hue+60)%360},80%,55%));
+        display:flex;align-items:center;justify-content:center;color:#fff;
+        text-align:center;padding:20px;font-weight:bold">
+        Preview for:<br>"${escapeHtml(prompt)}"
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin-top:8px">
+        Demo preview — connect an image-generation API to produce real renders.
+      </p>
+    `;
+
+  }, 700);
+
+}
+
+
+/* ------------------------------------------------------
+   COURSES
+------------------------------------------------------ */
+
+function continueCourse(title){
+  showToast(`Resuming "${title}"...`);
+}
+
+function saveCourseDraft(){
+
+  const title = document.getElementById("courseTitle").value.trim();
+  const description = document.getElementById("courseDescription").value.trim();
+
+  if(!title){
+    showToast("Enter a course title.","error");
+    return;
+  }
+
+  const grid = document.getElementById("courseGrid");
+
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="icon">📝</div>
+    <h3>${escapeHtml(title)}</h3>
+    <p>${escapeHtml(description || "Draft course — details coming soon.")}</p>
+    <span class="badge badge-warning">Draft</span>
+  `;
+
+  grid.prepend(card);
+
+  showToast("Course draft saved.","success");
+  closeModal("courseModal");
+
+  document.getElementById("courseTitle").value = "";
+  document.getElementById("courseDescription").value = "";
+
+}
+
+
+/* ------------------------------------------------------
+   EXAMS
+------------------------------------------------------ */
+
+function startExam(name){
+  state.examAttempts += 1;
+  document.getElementById("examAttemptsStat").textContent = state.examAttempts;
+  showToast(`Starting "${name}"...`);
+}
+
+
+/* ------------------------------------------------------
+   PDF / IMAGE TOOLS
+------------------------------------------------------ */
+
+function showFileName(input, labelId){
+  const label = document.getElementById(labelId);
+  if(!input.files || !input.files.length){
+    label.textContent = "";
+    return;
+  }
+  const names = Array.from(input.files).map(f => f.name).join(", ");
+  label.textContent = names;
+}
+
+function runTool(labelId, successMessage){
+  const label = document.getElementById(labelId);
+  if(!label.textContent){
+    showToast("Choose a file first.","error");
+    return;
+  }
+  showToast(`${successMessage}. Ready to download.`,"success");
+}
+
+
+/* ------------------------------------------------------
+   JOBS
+------------------------------------------------------ */
+
+function viewJob(title, company, meta){
+  state.savedJobs += 1;
+  document.getElementById("savedJobsStat").textContent = state.savedJobs;
+  showToast(`Application started for "${title}" at ${company} (${meta}).`,"success");
+}
+
+function filterJobs(){
+
+  const query = document.getElementById("jobSearch").value.trim().toLowerCase();
+  const location = document.getElementById("jobLocationSearch").value.trim().toLowerCase();
+
+  const cards = document.querySelectorAll("#jobGrid .job-card");
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const title = card.dataset.title.toLowerCase();
+    const loc = card.dataset.location.toLowerCase();
+
+    const matches = (!query || title.includes(query)) &&
+                     (!location || loc.includes(location));
+
+    card.style.display = matches ? "" : "none";
+    if(matches) visibleCount++;
+  });
+
+  document.getElementById("jobEmptyNote").style.display =
+    visibleCount === 0 ? "block" : "none";
+
+}
+
+function submitJobPost(){
+
+  const title = document.getElementById("jobTitleInput").value.trim();
+  const location = document.getElementById("jobLocationInput").value.trim();
+  const description = document.getElementById("jobDescriptionInput").value.trim();
+
+  if(!title || !location){
+    showToast("Enter a job title and location.","error");
+    return;
+  }
+
+  const grid = document.getElementById("jobGrid");
+
+  const card = document.createElement("div");
+  card.className = "card job-card";
+  card.dataset.title = title;
+  card.dataset.location = location;
+  card.innerHTML = `
+    <h3>${escapeHtml(title)}</h3>
+    <p>${escapeHtml(description || "Your company")}</p>
+    <p>📍 ${escapeHtml(location)}</p>
+    <span class="badge badge-warning">Pending review</span>
+    <br>
+    <button type="button" class="btn btn-primary" onclick="viewJob('${escapeAttribute(title)}','${escapeAttribute(location)}','Pending review')">View & Apply</button>
+  `;
+
+  grid.prepend(card);
+
+  showToast("Job submitted for review.","success");
+  closeModal("jobModal");
+
+  document.getElementById("jobTitleInput").value = "";
+  document.getElementById("jobLocationInput").value = "";
+  document.getElementById("jobDescriptionInput").value = "";
+
+}
+
+
+/* ------------------------------------------------------
+   MARKETPLACE PURCHASE — real PayPal order flow via backend
+------------------------------------------------------ */
+
+function buyProduct(productId, productName, price){
+
+  if(!currentUser){
+    showToast("Please log in to make a purchase.","error");
+    openModal("loginModal");
+    return;
+  }
+
+  document.getElementById("paypalModalTitle").textContent = "Complete Purchase";
+  document.getElementById("paypalModalSummary").textContent =
+    `${productName} — ₹${price}`;
+
+  const container = document.getElementById("paypal-button-container");
+  container.innerHTML = "";
+
+  openModal("paypalModal");
+
+  if(typeof paypal === "undefined"){
+    container.innerHTML =
+      "<p style='color:var(--danger)'>PayPal SDK failed to load. Check your internet connection or Client ID.</p>";
+    return;
+  }
+
+  paypal.Buttons({
+
+    style:{ layout:"vertical", color:"blue", shape:"rect", label:"paypal" },
+
+    // Order is created on OUR server — the real price comes from the
+    // database, never from this browser. We only ever send a product id.
+    createOrder: async () => {
+
+      const res = await fetch(`${API_BASE}/orders`, {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${currentUser.token}`
+        },
+        body: JSON.stringify({ productId })
+      });
+
+      const data = await res.json();
+
+      if(!res.ok){
+        throw new Error(data.error || "Could not start checkout.");
+      }
+
+      return data.paypalOrderId;
+
+    },
+
+    onApprove: async (data) => {
+
+      const res = await fetch(`${API_BASE}/orders/${data.orderID}/capture`, {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${currentUser.token}`
+        }
+      });
+
+      const result = await res.json();
+
+      if(!res.ok){
+        showToast(result.error || "Payment could not be captured.","error");
+        return;
+      }
+
+      addTransaction(`Purchase: ${productName}`, "Purchase", -price, "Completed");
+      showToast(`Payment complete — thank you!`,"success");
+      closeModal("paypalModal");
+
+    },
+
+    onError:(err) => {
+      console.error("PayPal checkout error:", err);
+      showToast(err.message || "Payment failed. Please try again.","error");
+    },
+
+    onCancel:() => {
+      showToast("Checkout cancelled.");
+    }
+
+  }).render("#paypal-button-container");
+
+}
+
+
+function submitProduct(){
+
+  const name = document.getElementById("productNameInput").value.trim();
+  const price = Number(document.getElementById("productPriceInput").value);
+
+  if(!name || !price || price <= 0){
+    showToast("Enter a product name and a valid price.","error");
+    return;
+  }
+
+  showToast("Product submitted for review — connect this to a real /api/products POST route to save it.","success");
+  closeModal("productModal");
+
+  document.getElementById("productNameInput").value = "";
+  document.getElementById("productPriceInput").value = "";
+  document.getElementById("productFileInput").value = "";
+
+}
+
+
+/* ------------------------------------------------------
+   SUBSCRIPTIONS
+------------------------------------------------------ */
+
+const planPrices = { basic:299, pro:799, business:1999 };
+
+// PayPal Plan IDs from your PayPal dashboard (Products & Plans).
+// Subscriptions can't run on the Client ID alone — each plan (Basic,
+// Pro, Business) must exist in PayPal first and have an ID pasted here.
+const paypalPlanIds = {
+  basic:   "", // e.g. "P-5ML4271244454362WXNWU5NQ"
+  pro:     "",
+  business:""
+};
+
+function startCheckout(planId, buttonEl){
+
+  if(!currentUser){
+    showToast("Please log in to subscribe.","error");
+    openModal("loginModal");
+    return;
+  }
+
+  const price = planPrices[planId] || 0;
+  const label = planId.charAt(0).toUpperCase() + planId.slice(1);
+
+  if(!paypalPlanIds[planId]){
+    showToast(`No PayPal Plan ID set for "${label}" yet.`,"error");
+    return;
+  }
+
+  document.getElementById("paypalModalTitle").textContent = "Subscribe";
+  document.getElementById("paypalModalSummary").textContent =
+    `${label} plan — ₹${price}/month`;
+
+  const container = document.getElementById("paypal-button-container");
+  container.innerHTML = "";
+
+  openModal("paypalModal");
+
+  paypal.Buttons({
+
+    style:{ layout:"vertical", color:"blue", shape:"rect", label:"subscribe" },
+
+    createSubscription:(data, actions) => {
+      return actions.subscription.create({
+        plan_id: paypalPlanIds[planId]
+      });
+    },
+
+    onApprove:(data) => {
+      addTransaction(`${label} plan subscription`, "Subscription", -price, "Completed");
+
+      document.querySelectorAll("[data-plan]").forEach(btn => {
+        btn.textContent = "Subscribe";
+        btn.disabled = false;
+      });
+
+      if(buttonEl){
+        buttonEl.textContent = "Active";
+        buttonEl.disabled = true;
+      }
+
+      showToast(`Subscribed to the ${label} plan.`,"success");
+      closeModal("paypalModal");
+    },
+
+    onError:(err) => {
+      console.error("PayPal subscription error:", err);
+      showToast("Subscription failed. Please try again.","error");
+    }
+
+  }).render("#paypal-button-container");
+
+}
+
+
+/* ------------------------------------------------------
+   WALLET
+------------------------------------------------------ */
+
+function addTransaction(description, type, amount, status){
+
+  state.transactions.unshift({
+    date:new Date().toLocaleDateString(),
+    description,
+    type,
+    amount,
+    status
+  });
+
+  state.wallet.available += amount;
+  state.wallet.lifetime += Math.abs(amount);
+  if(amount < 0){
+    state.wallet.month += amount;
+  }
+
+  renderWallet();
+
+}
+
+function renderWallet(){
+
+  document.getElementById("walletAvailable").textContent =
+    `₹${state.wallet.available.toFixed(2)}`;
+  document.getElementById("walletPending").textContent =
+    `₹${state.wallet.pending.toFixed(2)}`;
+  document.getElementById("walletMonth").textContent =
+    `₹${state.wallet.month.toFixed(2)}`;
+  document.getElementById("walletLifetime").textContent =
+    `₹${state.wallet.lifetime.toFixed(2)}`;
+  document.getElementById("homeWalletStat").textContent =
+    `₹${state.wallet.available.toFixed(2)}`;
+
+  const body = document.getElementById("transactionsBody");
+
+  if(!state.transactions.length){
+    body.innerHTML = `
+      <tr>
+        <td>—</td>
+        <td>No transactions yet</td>
+        <td>—</td>
+        <td>₹0</td>
+        <td><span class="badge badge-warning">Waiting</span></td>
+      </tr>
+    `;
+    return;
+  }
+
+  body.innerHTML = state.transactions.map(tx => {
+
+    const badgeClass = tx.status === "Completed" ? "badge-success"
+      : tx.status === "Pending" ? "badge-warning"
+      : "badge-danger";
+
+    const amountLabel = (tx.amount >= 0 ? "+" : "-") +
+      `₹${Math.abs(tx.amount).toFixed(2)}`;
+
+    return `
+      <tr>
+        <td>${escapeHtml(tx.date)}</td>
+        <td>${escapeHtml(tx.description)}</td>
+        <td>${escapeHtml(tx.type)}</td>
+        <td>${escapeHtml(amountLabel)}</td>
+        <td><span class="badge ${badgeClass}">${escapeHtml(tx.status)}</span></td>
+      </tr>
+    `;
+
+  }).join("");
+
+}
+
+function requestWithdrawal(){
+
+  const amountInput = document.getElementById("withdrawAmount");
+  const amount = Number(amountInput.value);
+
+  setFieldError("withdrawError","");
+
+  if(!amount || amount <= 0){
+    setFieldError("withdrawError","Enter a valid amount.");
+    return;
+  }
+
+  if(amount > state.wallet.available){
+    setFieldError("withdrawError",
+      `You only have ₹${state.wallet.available.toFixed(2)} available.`);
+    return;
+  }
+
+  state.wallet.available -= amount;
+  state.wallet.pending += amount;
+
+  state.transactions.unshift({
+    date:new Date().toLocaleDateString(),
+    description:"Withdrawal to PayPal",
+    type:"Withdrawal",
+    amount:-amount,
+    status:"Pending"
+  });
+
+  state.wallet.lifetime += amount;
+
+  renderWallet();
+
+  showToast("Withdrawal request submitted for review.","success");
+  closeModal("withdrawModal");
+
+  amountInput.value = "";
+
+}
+
+
+/* ------------------------------------------------------
+   PROFILE
+------------------------------------------------------ */
+
+function saveProfile(){
+
+  const name = document.getElementById("profileName").value.trim();
+  const email = document.getElementById("profileEmail").value.trim();
+
+  if(!name){
+    showToast("Enter your name.","error");
+    return;
+  }
+
+  if(currentUser){
+    currentUser = { ...currentUser, name, email: email || currentUser.email };
+  }
+
+  refreshAccountUI();
+
+  showToast("Profile updated.","success");
+
+}
+
+
+/* ------------------------------------------------------
+   SECURITY HELPERS
+------------------------------------------------------ */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+function escapeAttribute(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* ------------------------------------------------------
+   INITIALISE — restore session from a saved token, if any
+------------------------------------------------------ */
+
+(async function initSession(){
+
+  const token = localStorage.getItem("vamp4_token");
+
+  if(!token) return;
+
+  // We don't have a dedicated "who am I" endpoint yet, so this just
+  // keeps the token around for API calls; the header still shows
+  // "Login" until you add a GET /api/auth/me route and call it here
+  // to repopulate currentUser on page refresh.
+  currentUser = { token };
+
+})();
+
+renderWallet();
+
+</script>
+
+</body>
+</html>
